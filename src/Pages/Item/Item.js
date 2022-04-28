@@ -1,7 +1,13 @@
 import React from 'react';
+import { useNavigate } from 'react-router';
 
 const Item = (props) => {
-    const { name, image, description, price, quantity, supplierName } = props.item;
+    const { _id, name, image, description, price, quantity, supplierName } = props.item;
+    const navigate = useNavigate();
+
+    const handleUpdate = _id => {
+        navigate(`/inventory/:${_id}`)
+    }
 
     return (
         <div className='col-lg-4'>
@@ -12,7 +18,7 @@ const Item = (props) => {
                 <p>${price}</p>
                 <p>{quantity}</p>
                 <p>{supplierName}</p>
-                <button className='btn btn-primary'>Update</button>
+                <button onClick={() => handleUpdate(_id)} className='btn btn-primary'>handleUpdate</button>
             </div>
         </div>
     );

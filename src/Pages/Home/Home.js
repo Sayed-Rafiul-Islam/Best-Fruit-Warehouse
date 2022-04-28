@@ -1,13 +1,14 @@
 import axios from "axios";
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
 import Header from "../Header/Header";
 import Item from "../Item/Item";
 
 const Home = () => {
     const [items, setItems] = useState([]);
     const getItems = async () => {
-        const data = await (await axios.get('http://localhost:5000/item')).data;
-        setItems(data);
+        const data = await axios.get('http://localhost:5000/item');
+        setItems(data.data);
     }
     getItems();
 
@@ -25,6 +26,7 @@ const Home = () => {
                         item={item}
                     ></Item>)
                 }
+                <button><Link to={'/manageInventory'}>Manage Inventory</Link></button>
             </div>
             <div><p>section-1</p></div>W
             <div><p>section-2</p></div>
