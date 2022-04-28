@@ -1,0 +1,50 @@
+[
+    {
+        "name": "Water Lemon",
+        "image": "https://i.ibb.co/LzjWxFY/fruit-1.png",
+        "description": "Fresh water lemons. Extremely juicy and really tasty from Thailand",
+        "price": "5",
+        "quantity": "45",
+        "supplierName": "Arron Cross"
+    },
+    {
+        "name": "Pineapple",
+        "image": "https://i.ibb.co/tqLg89v/fruit-2.png",
+        "description": "Fresh pineapples from Canada. Extremely juicy, tasty and hygienic",
+        "price": "1.4",
+        "quantity": "29",
+        "supplierName": "Amanda Waller"
+    },
+    {
+        "name": "Mango",
+        "image": "https://i.ibb.co/4txP4WZ/fruit-3.png",
+        "description": "Fresh and hygienic Mango. Extremely juicy and really tasty from Bangladesh",
+        "price": "0.45",
+        "quantity": "56",
+        "supplierName": "Mobassir Billah"
+    },
+    {
+        "name": "Coconut",
+        "image": "https://i.ibb.co/WkLPy1B/fruit-4.png",
+        "description": "Fresh coconut from Australia. Extremely tasty and hygienic",
+        "price": "0.7",
+        "quantity": "68",
+        "supplierName": "Jackson Teller"
+    },
+    {
+        "name": "Banana",
+        "image": "https://i.ibb.co/VqvS9m1/fruit-5.png",
+        "description": "Fresh banana from Bangladesh. Really tasty and hygienic",
+        "price": "0.08",
+        "quantity": "144",
+        "supplierName": "Liton das"
+    },
+    {
+        "name": "Apple",
+        "image": "https://i.ibb.co/NpD1yKR/fruit-6.png",
+        "description": "Fresh and hygienic apple.Really tasty from India",
+        "price": "0.50",
+        "quantity": "89",
+        "supplierName": "Manush Pandey"
+    }
+]
