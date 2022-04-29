@@ -13,18 +13,6 @@ const Item = (props) => {
 
     return (
         <div className='col-12 col-lg-4'>
-            {/* <div className='d-flex justify-center'>
-                <img className="w-100 mx-auto" src={image} alt="" />
-            </div>
-            <div className='py-lg-2'>
-                <h5>{name}</h5>
-                <p><i>{description}</i></p>
-                <p>${price}</p>
-                <p>{quantity}</p>
-                <p>{supplierName}</p>
-                <button onClick={() => handleUpdate(_id)} className='btn btn-outline-dark w-100'>Update</button>
-
-            </div> */}
             <Card className="position-relative card bg-dark text-white overflow-hidden">
                 <Card.Img className='card-img' src={image} alt="Card image" />
                 <Card.ImgOverlay className='dark-overlay'>

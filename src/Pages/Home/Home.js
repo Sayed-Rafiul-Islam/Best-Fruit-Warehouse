@@ -7,6 +7,7 @@ import Item from "../Item/Item";
 
 const Home = () => {
     const [items, setItems] = useState([]);
+    const homeItems = items.slice(0, 6);
 
     const getItems = async () => {
         const data = await axios.get('http://localhost:5000/item');
@@ -26,7 +27,7 @@ const Home = () => {
             </Spinner>
             <div className="row container-fluid mx-auto">
                 {
-                    items.map(item => <Item
+                    homeItems.map(item => <Item
                         key={item._id}
                         item={item}
                     ></Item>)
