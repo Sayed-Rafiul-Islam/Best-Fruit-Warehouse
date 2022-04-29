@@ -36,12 +36,6 @@ const Inventory = () => {
     }
 
 
-    quantity = amount;
-    const updatedItem = { _id, name, image, description, quantity, price, supplierName };
-    console.log(updatedItem);
-
-
-
     const handleDelete = remove => {
         const newAmount = amount - remove;
         if (newAmount > 0) {
@@ -54,7 +48,23 @@ const Inventory = () => {
 
     }
 
+    quantity = amount;
+    const updatedItem = { _id, name, image, description, quantity, price, supplierName };
+    console.log(updatedItem);
 
+    const handleUpdateItem = () => {
+        fetch(`http://localhost:5000/inventory/${_id}`, {
+            method: 'PUT',
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify(updatedItem)
+        })
+            .then(res => res.json())
+            .then(data => {
+                console.log(data)
+            })
+    }
 
 
 
@@ -98,6 +108,7 @@ const Inventory = () => {
                             </Form>
                         </InputGroup>
                         <button style={{ display: del === 'disable' && "none" }} onClick={() => handleDelete(1)} className='btn btn-danger'>Delete</button>
+                        <button onClick={handleUpdateItem} className='btn btn-info'>Update</button>
                     </Card.Body>
                 </Card>
                 <button onClick={navToManageInventory} className='btn btn-dark'>Manage Inventory</button>
