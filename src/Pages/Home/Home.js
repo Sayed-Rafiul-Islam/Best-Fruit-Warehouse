@@ -1,11 +1,13 @@
 import axios from "axios";
 import React, { useState } from "react";
+import { Spinner } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import Header from "../Header/Header";
 import Item from "../Item/Item";
 
 const Home = () => {
     const [items, setItems] = useState([]);
+
     const getItems = async () => {
         const data = await axios.get('http://localhost:5000/item');
         setItems(data.data);
@@ -14,12 +16,15 @@ const Home = () => {
 
     /* https://i.ibb.co/Y2BjR2g/fruit-7.png */
     return (
-        <div>
-
-            <div><p>banner</p></div>
+        <div className="d-flex flex-column justify-center">
+            <div>
+                <p>banner</p>
+            </div>
             <Header></Header>
-            <h1>Home</h1>
-            <div className="row">
+            <div style={{ display: `${items[0]?._id ? 'none' : 'block'}` }} className="spinner-border mx-auto" role="status">
+                <span className="visually-hidden">Loading...</span>
+            </div>
+            <div className="row container-fluid mx-auto">
                 {
                     items.map(item => <Item
                         key={item._id}
