@@ -18,7 +18,7 @@ const Item = (props) => {
                 <p>${price}</p>
                 <p>{quantity}</p>
                 <p>{supplierName}</p>
-                <button onClick={() => handleUpdate(_id)} className='btn btn-primary'>handleUpdate</button>
+                <button onClick={() => handleUpdate(_id)} className='btn btn-primary'>Update</button>
             </div>
         </div>
     );

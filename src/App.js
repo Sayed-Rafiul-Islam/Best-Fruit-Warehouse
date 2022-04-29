@@ -1,7 +1,13 @@
+import { ToastContainer } from 'react-bootstrap';
 import { Route, Routes } from 'react-router';
 import './App.css';
+import AddInventoryItem from './Pages/AddInventoryItem/AddInventoryItem';
+import Blogs from './Pages/Blogs/Blogs';
 import Home from './Pages/Home/Home';
 import Inventory from './Pages/Inventory/Inventory';
+import Login from './Pages/Logins/Login/Login';
+import Register from './Pages/Logins/Register/Register';
+import RequireAuth from './Pages/Logins/RequireAuth/RequireAuth';
 import ManageInventory from './Pages/ManageInventory/ManageInventory';
 import NotFound from './Pages/NotFound/NotFound';
 
@@ -11,10 +17,21 @@ function App() {
       <Routes>
         <Route path='/' element={<Home></Home>}></Route>
         <Route path='/home' element={<Home></Home>}></Route>
-        <Route path='/inventory/:id' element={<Inventory></Inventory>}></Route>
+        <Route path='/inventory/:id' element={
+          <RequireAuth>
+            <Inventory></Inventory>
+          </RequireAuth>
+        }></Route>
         <Route path='/manageInventory' element={<ManageInventory></ManageInventory>}></Route>
+        <Route path='/addInventoryItem' element={<AddInventoryItem></AddInventoryItem>}></Route>
+        <Route path='/addInventoryItem' element={<AddInventoryItem></AddInventoryItem>}></Route>
+        <Route path="/login" element={<Login></Login>}></Route>
+        <Route path="register" element={<Register></Register>}></Route>
+        <Route path="blogs" element={<Blogs></Blogs>}></Route>
         <Route path="*" element={<NotFound></NotFound>}></Route>
       </Routes>
+
+
     </div>
   );
 }
