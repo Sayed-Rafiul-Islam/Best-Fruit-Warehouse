@@ -15,7 +15,7 @@ const Home = () => {
     }
     getItems();
 
-    /* https://i.ibb.co/Y2BjR2g/fruit-7.png */
+
     return (
         <div className="d-flex flex-column justify-center">
             <div className="mb-5">
@@ -32,8 +32,9 @@ const Home = () => {
                         item={item}
                     ></Item>)
                 }
-                <button><Link to={'/manageInventory'}>Manage Inventory</Link></button>
+
             </div>
+            <button><Link to={'/manageInventory'}>Manage Inventory</Link></button>
             <div><p>section-1</p></div>W
             <div><p>section-2</p></div>
             <div><p>footer</p></div>

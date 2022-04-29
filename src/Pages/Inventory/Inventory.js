@@ -5,18 +5,17 @@ import { useNavigate, useParams } from 'react-router';
 
 const Inventory = () => {
     const [item, setItem] = useState({});
-
+    console.log(item)
     const { id } = useParams();
-    // const getItem = async () => {
-    //     const data = await axios.get(`http://localhost:5000/inventory/${id}`);
-    //     setItem(data.data);
-    // }
-    // getItem();
+
     useEffect(() => {
-        fetch(`http://localhost:5000/inventory/${id}`)
-            .then(res => res.json())
-            .then(data => setItem(data))
-    }, [])
+        const getItem = async () => {
+            const data = await axios.get(`http://localhost:5000/inventory/${id}`);
+            setItem(data.data);
+        }
+        getItem();
+    }, [id])
+
     let { _id, name, image, description, quantity, price, supplierName } = item;
     quantity = parseInt(quantity);
     let [amount, setAmount] = useState(-2000);
@@ -35,6 +34,13 @@ const Inventory = () => {
             alert('Restocking amount must be positive !!')
         }
     }
+
+
+    quantity = amount;
+    const updatedItem = { _id, name, image, description, quantity, price, supplierName };
+    console.log(updatedItem);
+
+
 
     const handleDelete = remove => {
         const newAmount = amount - remove;
