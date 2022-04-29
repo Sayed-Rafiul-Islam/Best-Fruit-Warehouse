@@ -17,13 +17,13 @@ const Home = () => {
     /* https://i.ibb.co/Y2BjR2g/fruit-7.png */
     return (
         <div className="d-flex flex-column justify-center">
-            <div>
-                <p>banner</p>
+            <div className="w-100">
+                <img className="" src='https://i.ibb.co/xqJPqxX/banner.jpg' alt="" />
             </div>
             <Header></Header>
-            <div style={{ display: `${items[0]?._id ? 'none' : 'block'}` }} className="spinner-border mx-auto" role="status">
-                <span className="visually-hidden">Loading...</span>
-            </div>
+            <Spinner style={{ display: `${items[0]?._id ? 'none' : 'block'}` }} className="spinner-border mx-auto" role="status">
+
+            </Spinner>
             <div className="row container-fluid mx-auto">
                 {
                     items.map(item => <Item

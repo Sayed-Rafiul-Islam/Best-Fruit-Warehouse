@@ -1,7 +1,7 @@
 import React from 'react';
 import { Spinner } from 'react-bootstrap';
 import { useSignInWithGoogle } from 'react-firebase-hooks/auth';
-import { useNavigate } from 'react-router';
+import { useLocation, useNavigate } from 'react-router';
 import { toast } from 'react-toastify';
 import auth from '../../../firebase.init';
 
@@ -10,9 +10,12 @@ const SocialLogin = () => {
 
 
     const navigate = useNavigate();
+    const location = useLocation();
+    let from = location.state?.from?.pathname || "/";
+
     if (user) {
         toast('Login Successful');
-        navigate('/home');
+        navigate(from, { replace: true });
     }
 
     let errorMessage;
@@ -23,8 +26,7 @@ const SocialLogin = () => {
         <div>
             {
                 loading ?
-                    <Spinner animation="border" role="status">
-                        <p className="visually-hidden text-center">Loading...</p>
+                    <Spinner className='d-block mx-auto' animation="border" role="status">
                     </Spinner>
                     :
                     <button onClick={() => signInWithGoogle()} className='btn btn-outline-primary w-100'>Google Login</button>

@@ -57,8 +57,7 @@ const Login = () => {
                     </Form.Group>
                     {
                         loading ?
-                            <Spinner animation="border" role="status">
-                                <p className="visually-hidden text-center">Loading...</p>
+                            <Spinner className='d-block mx-auto' animation="border" role="status">
                             </Spinner>
                             :
                             <Button className='w-100 mb-2' variant="primary" type="submit">

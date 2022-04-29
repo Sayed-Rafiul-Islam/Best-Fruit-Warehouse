@@ -31,11 +31,8 @@ const Register = () => {
     if (error) {
         errorMessage = <p className='text-danger'>{error.message}</p>;
     }
-    if (loading) {
-        return <p>Loading...</p>;
-    }
     if (user) {
-        toast('Successfully Registered');
+        toast('Verification mail has been sent');
         navigate('/home')
 
     }
@@ -57,8 +54,7 @@ const Register = () => {
                     </Form.Group>
                     {
                         loading ?
-                            <Spinner animation="border" role="status">
-                                <p className="visually-hidden text-center">Loading...</p>
+                            <Spinner className='d-block mx-auto' animation="border" role="status">
                             </Spinner>
                             :
                             <Button className='w-100 mb-2' variant="primary" type="submit">
