@@ -56,7 +56,7 @@ const AddInventoryItem = () => {
                     <Form.Control name='description' type="text" placeholder="Description" required />
                 </Form.Group>
                 <Form.Group className="mb-3" controlId="formBasicDescription">
-                    <Form.Control name='price' type="text" placeholder="Price $" required />
+                    <Form.Control name='price' type="number" placeholder="Price $" required />
                 </Form.Group>
                 <Form.Group className="mb-3" controlId="formBasicDescription">
                     <Form.Control name='quantity' type="number" placeholder="Quantity" required />

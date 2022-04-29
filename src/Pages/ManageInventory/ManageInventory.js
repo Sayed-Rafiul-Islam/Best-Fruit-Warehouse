@@ -1,6 +1,6 @@
 import axios from 'axios';
 import React, { useState } from 'react';
-import { Table } from 'react-bootstrap';
+import { Spinner, Table } from 'react-bootstrap';
 import { useNavigate } from 'react-router';
 import TableItem from './TableItem/TableItem';
 
@@ -37,27 +37,35 @@ const ManageInventory = () => {
     return (
         <div>
             <h1>manage inventory</h1>
+
             <div className='container'>
-                <Table responsive="lg">
-                    <thead>
-                        <tr>
-                            <th>Id</th>
-                            <th>Name</th>
-                            <th>Price</th>
-                            <th>Quantity</th>
-                            <th>Supplier Name</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {
-                            items.map(item => <TableItem
-                                key={item._id}
-                                item={item}
-                                handleItemDelete={handleItemDelete}
-                            ></TableItem>)
-                        }
-                    </tbody>
-                </Table>
+                {
+                    items[0]?._id ?
+                        <Table responsive="lg">
+                            <thead>
+                                <tr>
+                                    <th>Id</th>
+                                    <th>Name</th>
+                                    <th>Price</th>
+                                    <th>Quantity</th>
+                                    <th>Supplier Name</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {
+                                    items.map(item => <TableItem
+                                        key={item._id}
+                                        item={item}
+                                        handleItemDelete={handleItemDelete}
+                                    ></TableItem>)
+                                }
+                            </tbody>
+                        </Table>
+                        :
+                        <Spinner className="spinner-border mx-auto" role="status">
+                        </Spinner>
+                }
+
 
             </div>
             <button onClick={navToAddInventoryItem} className='btn btn-dark'>Add New Item</button>

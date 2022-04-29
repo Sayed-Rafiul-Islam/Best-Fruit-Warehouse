@@ -21,7 +21,7 @@ const Home = () => {
             <div className="mb-5">
                 <img className="w-100" src="https://i.ibb.co/MnSKtcN/banner.jpg" alt="" />
             </div>
-            <Header></Header>
+
             <Spinner style={{ display: `${items[0]?._id ? 'none' : 'block'}` }} className="spinner-border mx-auto" role="status">
 
             </Spinner>
