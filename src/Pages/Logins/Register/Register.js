@@ -1,14 +1,16 @@
 import { Button } from 'react-bootstrap';
-import React, { useState } from 'react';
+import React from 'react';
+import { useNavigate } from 'react-router';
 import { Form } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import { useCreateUserWithEmailAndPassword } from 'react-firebase-hooks/auth';
 import auth from '../../../firebase.init';
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const Register = () => {
-    const [email, setEmail] = useState('');
-    const [password, setPassword] = useState('');
 
+    const navigate = useNavigate();
     const [
         createUserWithEmailAndPassword,
         user,
@@ -16,13 +18,13 @@ const Register = () => {
         error,
     ] = useCreateUserWithEmailAndPassword(auth);
 
-    const handleRegister = e => {
+    const handleRegister = async e => {
         e.preventDefault();
-
         const name = e.target.name.value;
         const email = e.target.email.value;
         const password = e.target.password.value;
-        console.log(name, email, password)
+
+        await createUserWithEmailAndPassword(email, password);
     }
 
     let errorMessage;
@@ -33,11 +35,9 @@ const Register = () => {
         return <p>Loading...</p>;
     }
     if (user) {
-        return (
-            <div>
-                <p>Registered User: {user.email}</p>
-            </div>
-        );
+        toast('Successfully Registered');
+        navigate('/home')
+
     }
 
     return (
@@ -61,6 +61,7 @@ const Register = () => {
                     <p>Already have an account? <span><Link to='/login'>Go to Login</Link></span></p>
                     {errorMessage}
                 </Form>
+
             </div>
         </div>
     );

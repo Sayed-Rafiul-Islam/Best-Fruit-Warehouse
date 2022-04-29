@@ -12,7 +12,7 @@ const Header = () => {
     }
     return (
         <div className='my-3'>
-            <nav className='d-flex justify-content-between container'>
+            <nav className='d-flex align-items-center justify-content-between container'>
                 <div className='d-flex'>
                     <CustomLink to='/home'>HOME</CustomLink>
                     <CustomLink to='/inventory'>INVENTORY</CustomLink>
@@ -21,10 +21,12 @@ const Header = () => {
                 <div className='d-flex'>
                     {
                         user ?
-                            <CustomLink to='/home'>LOG OUT</CustomLink> &&
-                            <CustomLink to='/addInventoryItem'>ADD ITEM</CustomLink> &&
-                            <CustomLink to='/manageInventory'>MANAGE ITEMS</CustomLink> &&
-                            <CustomLink to='/myItem'>MY ITEMS</CustomLink>
+                            <div className='d-flex align-items-center'>
+                                <CustomLink to='/addInventoryItem'>ADD ITEM</CustomLink>
+                                <CustomLink to='/manageInventory'>MANAGE ITEMS</CustomLink>
+                                <CustomLink to='/myItem'>MY ITEMS</CustomLink>
+                                <CustomLink to='/home'><button onClick={handleLogout} className='btn btn-link text-decoration-none text-dark'>LOG OUT</button></CustomLink>
+                            </div>
                             :
                             <CustomLink to='/login'>LOG IN</CustomLink>
                     }
