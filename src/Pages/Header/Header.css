@@ -1,9 +1,9 @@
 .link {
-    color: rgb(64, 160, 53);
+    color: white;
 }
 
 .link:hover {
-    color: white;
+    color: orange;
     transition: .2s;
     font-size: large;
 }

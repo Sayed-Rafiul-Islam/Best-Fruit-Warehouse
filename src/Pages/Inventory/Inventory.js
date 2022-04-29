@@ -2,6 +2,8 @@ import React from 'react';
 import { useNavigate } from 'react-router';
 
 const Inventory = () => {
+
+    
     const navigate = useNavigate();
     const navToManageInventory = () => navigate('/manageInventory');
     return (
