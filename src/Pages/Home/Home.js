@@ -17,8 +17,8 @@ const Home = () => {
     /* https://i.ibb.co/Y2BjR2g/fruit-7.png */
     return (
         <div className="d-flex flex-column justify-center">
-            <div className="w-100">
-                <img className="" src='https://i.ibb.co/xqJPqxX/banner.jpg' alt="" />
+            <div className="mb-5">
+                <img className="w-100" src="https://i.ibb.co/MnSKtcN/banner.jpg" alt="" />
             </div>
             <Header></Header>
             <Spinner style={{ display: `${items[0]?._id ? 'none' : 'block'}` }} className="spinner-border mx-auto" role="status">

@@ -11,28 +11,28 @@ const Header = () => {
         signOut(auth);
     }
     return (
-        <div className='my-3'>
+        <div className='my-3 header fixed-top d-flex align-items-center'>
             <nav className='d-flex align-items-center justify-content-between container'>
                 <div className='d-flex'>
-                    <CustomLink to='/home'>HOME</CustomLink>
-                    <CustomLink to='/inventory'>INVENTORY</CustomLink>
-                    <CustomLink to='/blogs'>BLOGS</CustomLink>
+                    <CustomLink className='link' to='/home'><span className='link'>Home</span></CustomLink>
+                    <CustomLink className='link' to='/inventory'><span className='link'>INVENTORY</span></CustomLink>
+                    <CustomLink className='link' to='/blogs'><span className='link'>BLOGS</span></CustomLink>
                 </div>
                 <div className='d-flex'>
                     {
                         user ?
                             <div className='d-flex align-items-center'>
-                                <CustomLink to='/addInventoryItem'>ADD ITEM</CustomLink>
-                                <CustomLink to='/manageInventory'>MANAGE ITEMS</CustomLink>
-                                <CustomLink to='/myItem'>MY ITEMS</CustomLink>
-                                <CustomLink to='/home'><button onClick={handleLogout} className='btn btn-link text-decoration-none text-dark'>LOG OUT</button></CustomLink>
+                                <CustomLink className='link' to='/addInventoryItem'><span className='link'>ADD ITEM</span></CustomLink>
+                                <CustomLink className='link' to='/manageInventory'><span className='link'>MANAGE ITEMS</span></CustomLink>
+                                <CustomLink className='link' to='/myItem'><span className='link'>MY ITEMS</span></CustomLink>
+                                <CustomLink className='link' to='/home'><button onClick={handleLogout} className='btn btn-link text-decoration-none text-dark'><span className='link'>LOG OUT</span></button></CustomLink>
                             </div>
                             :
-                            <CustomLink to='/login'>LOG IN</CustomLink>
+                            <CustomLink className='link' to='/login'><span className='link'>LOG IN</span></CustomLink>
                     }
                 </div>
-            </nav>
-        </div>
+            </nav >
+        </div >
     );
 };
 
