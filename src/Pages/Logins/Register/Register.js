@@ -1,4 +1,4 @@
-import { Button } from 'react-bootstrap';
+import { Button, Spinner } from 'react-bootstrap';
 import React from 'react';
 import { useNavigate } from 'react-router';
 import { Form } from 'react-bootstrap';
@@ -16,7 +16,7 @@ const Register = () => {
         user,
         loading,
         error,
-    ] = useCreateUserWithEmailAndPassword(auth);
+    ] = useCreateUserWithEmailAndPassword(auth, { sendEmailVerification: true });
 
     const handleRegister = async e => {
         e.preventDefault();
@@ -55,9 +55,16 @@ const Register = () => {
                     <Form.Group className="mb-3" controlId="formBasicPassword">
                         <Form.Control name='password' type="password" placeholder="Password" required />
                     </Form.Group>
-                    <Button className='w-100 mb-2' variant="primary" type="submit">
-                        Register
-                    </Button>
+                    {
+                        loading ?
+                            <Spinner animation="border" role="status">
+                                <p className="visually-hidden text-center">Loading...</p>
+                            </Spinner>
+                            :
+                            <Button className='w-100 mb-2' variant="primary" type="submit">
+                                Register
+                            </Button>
+                    }
                     <p>Already have an account? <span><Link to='/login'>Go to Login</Link></span></p>
                     {errorMessage}
                 </Form>

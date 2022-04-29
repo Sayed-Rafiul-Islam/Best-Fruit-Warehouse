@@ -1,11 +1,18 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Button, Form, Spinner } from 'react-bootstrap';
-import { useSignInWithEmailAndPassword } from 'react-firebase-hooks/auth';
-import { Link } from 'react-router-dom';
+import { useSendPasswordResetEmail, useSignInWithEmailAndPassword } from 'react-firebase-hooks/auth';
 import { toast } from 'react-toastify';
 import auth from '../../../firebase.init';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
+import SocialLogin from '../SocialLogin/SocialLogin';
 
 const Login = () => {
+    const navigate = useNavigate();
+    const location = useLocation();
+    let from = location.state?.from?.pathname || "/";
+
+    const [email, setEmail] = useState('');
+    const [sendPasswordResetEmail, sending, error1] = useSendPasswordResetEmail(auth);
 
     const [
         signInWithEmailAndPassword,
@@ -29,11 +36,11 @@ const Login = () => {
 
     let errorMessage;
     if (error) {
-        errorMessage = <p className='text-danger text-center'>{error.message}</p>;
+        errorMessage = <p className='text-danger text-center'>{error?.message}</p>;
     }
     if (user) {
         toast('Successfully Registered');
-        // Navigate('/home')
+        navigate(from, { replace: true });
 
     }
     return (
@@ -58,11 +65,17 @@ const Login = () => {
                                 Login
                             </Button>
                     }
-                    <p>Don't have an account? <span><Link to='/register'>Go to Register</Link></span></p>
-                    <p>Forgot Password? <button className='btn btn-link pb-2'>Reset Password</button></p>
                     {errorMessage}
+                    <SocialLogin></SocialLogin>
+
                 </Form>
+
             </div>
+            <p className='text-center'>Don't have an account? <span><Link to='/register'>Go to Register</Link></span></p>
+            <p className='text-center'>Forgot Password? <button onClick={async () => {
+                await sendPasswordResetEmail(email);
+                toast('Sent email');
+            }} className='btn btn-link pb-2'>Reset Password</button></p>
 
         </div>
     );
