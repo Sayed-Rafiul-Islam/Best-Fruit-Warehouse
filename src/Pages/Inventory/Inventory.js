@@ -74,7 +74,7 @@ const Inventory = () => {
     const navigate = useNavigate();
     const navToManageInventory = () => navigate('/manageInventory');
     return (
-        <div className='mt-5 pt-lg-5 text-center'>
+        <div className='my-5 pt-lg-5 text-center'>
             <h1 className='text-success'>INVENTORY</h1>
             <p><i className='text-success mb-4'>Update Item</i></p>
             <div className=''>
@@ -120,7 +120,7 @@ const Inventory = () => {
 
 
             </div>
-            <button onClick={navToManageInventory} className='btn btn-success my-5 w-50'>Manage Inventory</button>
+            {/* <button onClick={navToManageInventory} className='btn btn-success my-5 w-50'>Manage Inventory</button> */}
         </div >
     );
 };

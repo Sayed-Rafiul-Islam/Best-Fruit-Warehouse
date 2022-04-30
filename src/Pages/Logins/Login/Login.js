@@ -13,6 +13,7 @@ const Login = () => {
     let from = location.state?.from?.pathname || "/";
 
     const [email, setEmail] = useState('');
+    console.log(email)
     const [sendPasswordResetEmail, sending, error1] = useSendPasswordResetEmail(auth);
 
     const [
@@ -50,7 +51,8 @@ const Login = () => {
             <div className='d-flex justify-content-center'>
                 <Form onSubmit={handleLogin} className='width'>
                     <Form.Group className="mb-3" controlId="formBasicEmail">
-                        <Form.Control name='email' type="email" placeholder="Enter email" required />
+                        <Form.Control name='email' type="email" placeholder="Enter email" required value={email}
+                            onChange={(e) => setEmail(e.target.value)} />
                     </Form.Group>
 
                     <Form.Group className="mb-3" controlId="formBasicPassword">
@@ -73,6 +75,7 @@ const Login = () => {
             </div>
             <p className='text-center mt-3'>Don't have an account? <Link to='/register'><span className='text-success'>Go to Register</span></Link></p>
             <p className='text-center'>Forgot Password? <button onClick={async () => {
+
                 await sendPasswordResetEmail(email);
                 toast('Sent email');
             }} className='btn btn-link pb-2  text-success'>Reset Password</button></p>
