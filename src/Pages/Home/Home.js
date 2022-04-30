@@ -2,8 +2,10 @@ import axios from "axios";
 import React, { useState } from "react";
 import { Spinner } from "react-bootstrap";
 import { Link } from "react-router-dom";
+import Founders from "../Founders/Founders";
 import Item from "../Item/Item";
 import MostAskedQuestions from "../MostAskedQuestions/MostAskedQuestions";
+import './Home.css'
 
 
 const Home = () => {
@@ -18,13 +20,13 @@ const Home = () => {
 
 
     return (
-        <div className="d-flex flex-column justify-center">
+        <div className="d-flex flex-column">
             <div className="mb-5">
                 <img className="img-fluid" src="https://i.ibb.co/BVv30Wc/banner.jpg" alt="" />
             </div>
 
             {/* Inventory Items section */}
-            <h1 className="text-center my-4">INVENTORY <span className="text-success">ITEMS</span></h1>
+            <h1 className="text-center ">INVENTORY <span className="text-success">ITEMS</span></h1>
 
             <Spinner style={{ display: `${items[0]?._id ? 'none' : 'block'}` }} className="spinner-border text-success mx-auto" role="status">
             </Spinner>
@@ -41,19 +43,27 @@ const Home = () => {
             </div>
 
             {/* Most Asked Questions Section  */}
-            <div>
+            <div className="my-4 container">
                 <h1 className="text-center my-4">MOST ASKED<span className="text-success"> QUESTIONS</span></h1>
-                <div className="d-flex flex-wrap align-items-center container">
+                <div className="d-flex flex-lg-row flex-column-reverse flex-wrap align-items-center container">
                     <MostAskedQuestions></MostAskedQuestions>
-                    <div className="w-50 ps-2">
-                        <img className="img-fluid" src="https://i.ibb.co/BVv30Wc/banner.jpg" alt="" />
+                    <div className="width ps-2">
+                        <img className="img-fluid" src="https://i.ibb.co/9cT0GLt/pic.jpg" alt="" />
                     </div>
                 </div>
             </div>
-            <div className="container">
-                <h1 className="text-center my-4">MEET THE<span className="text-success"> TEAM</span></h1>
+            {/* Best Fruits Warehouse Founders section */}
+            <div className="container my-4">
+                <h1 className="text-center my-4">BEST FRUITS WAREHOUSE<span className="text-success"> FOUNDERS</span></h1>
+                <div>
+                    <Founders></Founders>
+                </div>
             </div>
-            <div><p>footer</p></div>
+            <div className="bg-dark w-100 mt-4 py-4 text-center text-light">
+                <h3><span className="text-success">Best Fruits</span> Warehouse</h3>
+                <small>Copyright © 2022 Physics with Fun</small> <br />
+                <small>All rights reserved</small>
+            </div>
         </div>
     );
 };
