@@ -39,7 +39,7 @@ const Login = () => {
         errorMessage = <p className='text-danger text-center'>{error?.message}</p>;
     }
     if (user) {
-        toast('Successfully Registered');
+        toast('Successfully Logged In');
         navigate(from, { replace: true });
 
     }

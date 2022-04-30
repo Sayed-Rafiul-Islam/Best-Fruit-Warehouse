@@ -1,7 +1,8 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
-import { Button, Card, Form, FormControl, InputGroup, ListGroup, ListGroupItem } from 'react-bootstrap';
+import { Button, Card, Form, InputGroup, ListGroup, ListGroupItem, Spinner } from 'react-bootstrap';
 import { useNavigate, useParams } from 'react-router';
+import { toast } from 'react-toastify';
 
 const Inventory = () => {
     const [item, setItem] = useState({});
@@ -31,6 +32,8 @@ const Inventory = () => {
         if (add > 0) {
             const newAmount = amount + add;
             setAmount(newAmount);
+        }
+        if (add < 0) {
             alert('Restocking amount must be positive !!')
         }
     }
@@ -62,57 +65,61 @@ const Inventory = () => {
         })
             .then(res => res.json())
             .then(data => {
-                console.log(data)
+                if (data) {
+                    toast('Item updated')
+                }
             })
     }
-
-
-
-
-
-
-
-
 
     const navigate = useNavigate();
     const navToManageInventory = () => navigate('/manageInventory');
     return (
         <div>
             <h1>inventory</h1>
+
             <div>
-                <Card style={{ width: '18rem' }}>
-                    <Card.Img variant="top" src={image} />
-                    <Card.Body>
-                        <Card.Title>{name}</Card.Title>
-                        <Card.Text className='text-info'>
-                            ID : {_id}
-                        </Card.Text>
-                        <Card.Text>
-                            {description}
-                        </Card.Text>
-                    </Card.Body>
-                    <ListGroup className="list-group-flush">
-                        <ListGroupItem>Price : ${price}</ListGroupItem>
-                        <ListGroupItem>Quantity : {amount ? amount : quantity}</ListGroupItem>
-                        <ListGroupItem>Supplier Name : {supplierName}</ListGroupItem>
-                    </ListGroup>
-                    <Card.Body>
-                        <InputGroup className="mb-3">
-                            <Form onSubmit={handleRestock} className='w-75'>
-                                <Form.Group className="mb-3" controlId="formBasicNumber">
-                                    <Form.Control name='number' type="number" placeholder="Enter amount" required />
-                                </Form.Group>
-                                <Button className='w-100 mb-2' variant="success" type="submit">
-                                    Restock
-                                </Button>
-                            </Form>
-                        </InputGroup>
-                        <button style={{ display: del === 'disable' && "none" }} onClick={() => handleDelete(1)} className='btn btn-danger'>Delete</button>
-                        <button onClick={handleUpdateItem} className='btn btn-info'>Update</button>
-                    </Card.Body>
-                </Card>
-                <button onClick={navToManageInventory} className='btn btn-dark'>Manage Inventory</button>
+                {
+                    item?._id ?
+                        <Card style={{ width: '18rem' }}>
+                            <Card.Img variant="top" src={image} />
+                            <Card.Body>
+                                <Card.Title>{name}</Card.Title>
+                                <Card.Text className='text-info'>
+                                    ID : {_id}
+                                </Card.Text>
+                                <Card.Text>
+                                    {description}
+                                </Card.Text>
+                            </Card.Body>
+                            <ListGroup className="list-group-flush">
+                                <ListGroupItem>Price : ${price}</ListGroupItem>
+                                <ListGroupItem>Quantity : {amount ? amount : quantity}</ListGroupItem>
+                                <ListGroupItem>Supplier Name : {supplierName}</ListGroupItem>
+                            </ListGroup>
+                            <Card.Body>
+                                <InputGroup className="mb-3">
+                                    <Form onSubmit={handleRestock} className='w-75'>
+                                        <Form.Group className="mb-3" controlId="formBasicNumber">
+                                            <Form.Control name='number' type="number" placeholder="Enter amount" required />
+                                        </Form.Group>
+                                        <Button className='w-100 mb-2' variant="success" type="submit">
+                                            Restock
+                                        </Button>
+                                    </Form>
+                                </InputGroup>
+                                <button style={{ display: del === 'disable' && "none" }} onClick={() => handleDelete(1)} className='btn btn-danger'>Delete</button>
+                                <button onClick={handleUpdateItem} className='btn btn-info'>Update</button>
+                            </Card.Body>
+                        </Card>
+                        :
+                        <Spinner className="spinner-border mx-auto" role="status">
+                        </Spinner>
+
+                }
+
+
             </div>
+            <button onClick={navToManageInventory} className='btn btn-dark'>Manage Inventory</button>
         </div >
     );
 };

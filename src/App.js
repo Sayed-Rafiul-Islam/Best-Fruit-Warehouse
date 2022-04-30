@@ -11,6 +11,7 @@ import ManageInventory from './Pages/ManageInventory/ManageInventory';
 import NotFound from './Pages/NotFound/NotFound';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import MyItems from './Pages/MyItems/MyItems';
 
 function App() {
   return (
@@ -27,6 +28,7 @@ function App() {
         <Route path='/manageInventory' element={<ManageInventory></ManageInventory>}></Route>
         <Route path='/addInventoryItem' element={<AddInventoryItem></AddInventoryItem>}></Route>
         <Route path='/addInventoryItem' element={<AddInventoryItem></AddInventoryItem>}></Route>
+        <Route path='/myItems' element={<MyItems></MyItems>}></Route>
         <Route path="/login" element={<Login></Login>}></Route>
         <Route path="register" element={<Register></Register>}></Route>
         <Route path="blogs" element={<Blogs></Blogs>}></Route>

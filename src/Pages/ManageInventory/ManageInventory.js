@@ -5,6 +5,18 @@ import { useNavigate } from 'react-router';
 import TableItem from './TableItem/TableItem';
 
 const ManageInventory = () => {
+
+    const [loading, setLoading] = useState(false);
+    const neverLoad = () => {
+        const loadingItem = items[0]?._id;
+        if (!loadingItem) {
+            setLoading(true);
+        }
+    }
+    setTimeout(neverLoad, 9000);
+
+
+
     const navigate = useNavigate();
     const navToAddInventoryItem = () => navigate('/addInventoryItem');
 
@@ -49,6 +61,7 @@ const ManageInventory = () => {
                                     <th>Price</th>
                                     <th>Quantity</th>
                                     <th>Supplier Name</th>
+                                    <th>Thumbnail</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -62,8 +75,15 @@ const ManageInventory = () => {
                             </tbody>
                         </Table>
                         :
-                        <Spinner className="spinner-border mx-auto" role="status">
-                        </Spinner>
+                        <div>
+                            {
+                                loading ?
+                                    <h1 className='text-danger'>You did not add any items</h1>
+                                    :
+                                    <Spinner className="spinner-border mx-auto" role="status">
+                                    </Spinner>
+                            }
+                        </div>
                 }
 
 

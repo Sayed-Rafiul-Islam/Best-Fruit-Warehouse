@@ -6,7 +6,9 @@ import CustomLink from '../CustomLink/CustomLink';
 import './Header.css';
 
 const Header = () => {
+
     const [user] = useAuthState(auth);
+
     const handleLogout = () => {
         signOut(auth);
     }
@@ -15,7 +17,6 @@ const Header = () => {
             <nav className='d-flex align-items-center justify-content-between container'>
                 <div className='d-flex'>
                     <CustomLink className='link' to='/home'><span className='link'>Home</span></CustomLink>
-                    <CustomLink className='link' to='/inventory'><span className='link'>INVENTORY</span></CustomLink>
                     <CustomLink className='link' to='/blogs'><span className='link'>BLOGS</span></CustomLink>
                 </div>
                 <div className='d-flex'>
@@ -24,7 +25,7 @@ const Header = () => {
                             <div className='d-flex align-items-center'>
                                 <CustomLink className='link' to='/addInventoryItem'><span className='link'>ADD ITEM</span></CustomLink>
                                 <CustomLink className='link' to='/manageInventory'><span className='link'>MANAGE ITEMS</span></CustomLink>
-                                <CustomLink className='link' to='/myItem'><span className='link'>MY ITEMS</span></CustomLink>
+                                <CustomLink className='link' to='/myItems'> <span className='link'>MY ITEMS</span></CustomLink>
                                 <CustomLink className='link' to='/home'><button onClick={handleLogout} className='btn btn-link text-decoration-none text-dark'><span className='link'>LOG OUT</span></button></CustomLink>
                             </div>
                             :
