@@ -7,6 +7,7 @@ import { useCreateUserWithEmailAndPassword } from 'react-firebase-hooks/auth';
 import auth from '../../../firebase.init';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import './Register.css'
 
 const Register = () => {
 
@@ -38,10 +39,10 @@ const Register = () => {
     }
 
     return (
-        <div className='container mt-4'>
-            <h1 className='text-center'>Please Register</h1>
+        <div className='container pt-5 mt-5'>
+            <h1 className='text-center mb-4'>Please <span className='text-success'>Register</span></h1>
             <div className=' d-flex justify-content-center'>
-                <Form onSubmit={handleRegister} className='w-50'>
+                <Form onSubmit={handleRegister} className='width'>
                     <Form.Group className="mb-3" controlId="formBasicEmail">
                         <Form.Control name='name' type="text" placeholder="Name" required />
                     </Form.Group>
@@ -57,11 +58,11 @@ const Register = () => {
                             <Spinner className='d-block mx-auto' animation="border" role="status">
                             </Spinner>
                             :
-                            <Button className='w-100 mb-2' variant="primary" type="submit">
+                            <Button className='w-100 mb-2' variant="success" type="submit">
                                 Register
                             </Button>
                     }
-                    <p>Already have an account? <span><Link to='/login'>Go to Login</Link></span></p>
+                    <p>Already have an account? <Link to='/login'><span className='text-success'>Go to Login</span></Link></p>
                     {errorMessage}
                 </Form>
 

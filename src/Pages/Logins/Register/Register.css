@@ -1,3 +1,9 @@
-.link {
-    text-decoration: none;
+.width {
+    width: 50%;
+}
+
+@media (max-width: 576px) {
+    .width {
+        width: 75%;
+    }
 }

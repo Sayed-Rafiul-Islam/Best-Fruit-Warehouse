@@ -5,6 +5,7 @@ import { toast } from 'react-toastify';
 import auth from '../../../firebase.init';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import SocialLogin from '../SocialLogin/SocialLogin';
+import './Login.css'
 
 const Login = () => {
     const navigate = useNavigate();
@@ -44,10 +45,10 @@ const Login = () => {
 
     }
     return (
-        <div className='container mt-4'>
-            <h1 className='text-center'>Please Login</h1>
-            <div className=' d-flex justify-content-center'>
-                <Form onSubmit={handleLogin} className='w-50'>
+        <div className='container mt-5 pt-5'>
+            <h1 className='text-center mb-4'>Please <span className='text-success'>Login</span></h1>
+            <div className='d-flex justify-content-center'>
+                <Form onSubmit={handleLogin} className='width'>
                     <Form.Group className="mb-3" controlId="formBasicEmail">
                         <Form.Control name='email' type="email" placeholder="Enter email" required />
                     </Form.Group>
@@ -60,7 +61,7 @@ const Login = () => {
                             <Spinner className='d-block mx-auto' animation="border" role="status">
                             </Spinner>
                             :
-                            <Button className='w-100 mb-2' variant="primary" type="submit">
+                            <Button className='w-100 mb-2' variant="success" type="submit">
                                 Login
                             </Button>
                     }
@@ -70,11 +71,11 @@ const Login = () => {
                 </Form>
 
             </div>
-            <p className='text-center'>Don't have an account? <span><Link to='/register'>Go to Register</Link></span></p>
+            <p className='text-center mt-3'>Don't have an account? <Link to='/register'><span className='text-success'>Go to Register</span></Link></p>
             <p className='text-center'>Forgot Password? <button onClick={async () => {
                 await sendPasswordResetEmail(email);
                 toast('Sent email');
-            }} className='btn btn-link pb-2'>Reset Password</button></p>
+            }} className='btn btn-link pb-2  text-success'>Reset Password</button></p>
 
         </div>
     );

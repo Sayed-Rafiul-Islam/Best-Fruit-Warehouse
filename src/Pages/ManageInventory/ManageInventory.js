@@ -13,7 +13,7 @@ const ManageInventory = () => {
             setLoading(true);
         }
     }
-    setTimeout(neverLoad, 9000);
+    setTimeout(neverLoad, 15000);
 
 
 
@@ -47,13 +47,13 @@ const ManageInventory = () => {
     }
 
     return (
-        <div className='mt-5 pt-5'>
-            <h1 className='text-center mt-lg-0 mt-5 pt-lg-0 pt-5 mb-4'>MANAGE INVENTORY ITEMS</h1>
+        <div className='mt-5 pt-lg-5'>
+            <h1 className='text-center mb-4'>MANAGE INVENTORY <span className='text-success'>ITEMS</span></h1>
 
             <div className='container'>
                 {
                     items[0]?._id ?
-                        <Table hover responsive="sm">
+                        <Table hover variant='success' responsive="sm">
                             <thead>
                                 <tr>
                                     <th>Id</th>

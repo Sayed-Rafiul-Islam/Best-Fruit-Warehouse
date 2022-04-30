@@ -2,9 +2,8 @@ import axios from "axios";
 import React, { useState } from "react";
 import { Spinner } from "react-bootstrap";
 import { Link } from "react-router-dom";
-import Header from "../Header/Header";
 import Item from "../Item/Item";
-import OffCanvas from "../OffCanvas/OffCanvas";
+
 
 const Home = () => {
     const [items, setItems] = useState([]);
@@ -36,7 +35,7 @@ const Home = () => {
                         ></Item>)
                     }
                 </div>
-                <button className="btn btn-dark d-block mx-auto"><Link className="text-white text-decoration-none" to={'/manageInventory'}>Manage Inventory</Link></button>
+                <button className="btn btn-success d-block mx-auto mt-3"><Link className="text-white text-decoration-none" to={'/manageInventory'}>Manage Inventory</Link></button>
             </div>
 
             <div><p>section-1</p></div>

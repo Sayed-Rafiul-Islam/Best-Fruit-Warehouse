@@ -10,7 +10,7 @@
 
 .header {
     height: 60px;
-    background-color: rgba(16, 16, 16, 0.444);
+    background-color: #1563158a;
 }
 
 .header-bg {
@@ -32,7 +32,7 @@
 @media (max-width: 576px) {
     .header-btn {
         display: block;
-        background-color: rgba(16, 16, 16, 0.444);
+        background-color: #1563158a;
     }
 
     .nav {
@@ -62,6 +62,6 @@
     }
 
     .header-bg {
-        background-color: rgba(16, 16, 16, 0.444);
+        background-color: #1563158a
     }
 }

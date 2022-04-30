@@ -19,8 +19,8 @@ const Header = () => {
         <div className='my-lg-3 header fixed-top d-flex align-items-center'>
             <button onClick={() => setVisible(!visible)} className='fixed-top w-25 header-btn btn btn-link text-decoration-none text-light'>MENU</button>
             <div className={visible ? 'nav-1' : 'nav-2'}>
-                <nav className='header-bg d-flex flex-lg-row flex-column align-items-center nav'>
-                    <div className='d-flex flex-lg-row flex-column space'>
+                <nav className='header-bg d-flex flex-lg-row flex-column align-items-center container justify-content-evenly'>
+                    <div className='d-flex flex-lg-row flex-column'>
                         <CustomLink className='link' to='/home'><span className='link'>Home</span></CustomLink>
                         <CustomLink className='link' to='/blogs'><span className='link'>BLOGS</span></CustomLink>
                     </div>

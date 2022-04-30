@@ -44,8 +44,8 @@ const AddInventoryItem = () => {
 
     }
     return (
-        <div className='mt-5 pt-5'>
-            <h1 className='text-center mt-lg-0 mt-5 pt-lg-0 pt-5'>ADD ITEM</h1>
+        <div className='mt-5 pt-lg-5'>
+            <h1 className='text-center mb-4'>ADD <span className='text-success'>ITEMS</span></h1>
             <Form onSubmit={handleAddItem} className='mt-lg-4 mx-auto sm-width'>
                 <Form.Group className="mb-3" controlId="formBasicName">
                     <Form.Control name='name' type="text" placeholder="Name" required />

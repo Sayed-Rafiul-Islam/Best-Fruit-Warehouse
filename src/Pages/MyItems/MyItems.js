@@ -47,12 +47,12 @@ const MyItems = () => {
 
     }
     return (
-        <div className='mt-5 pt-5 text-center mb-4'>
-            <h1 className='mt-lg-0 pt-lg-0 mt-5 pt-5' >MY ITEMS</h1>
+        <div className='mt-5 pt-lg-5 text-center mb-4'>
+            <h1 className='mb-4' >MY <span className='text-success'>ITEMS</span></h1>
             <div className='container'>
                 {
                     myItems[0]?._id ?
-                        <Table hover responsive="sm">
+                        <Table hover variant='success' responsive="sm">
                             <thead>
                                 <tr>
                                     <th>Id</th>

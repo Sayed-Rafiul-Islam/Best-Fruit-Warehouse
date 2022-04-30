@@ -29,7 +29,7 @@ const SocialLogin = () => {
                     <Spinner className='d-block mx-auto' animation="border" role="status">
                     </Spinner>
                     :
-                    <button onClick={() => signInWithGoogle()} className='btn btn-outline-primary w-100'>Google Login</button>
+                    <button onClick={() => signInWithGoogle()} className='btn btn-outline-success w-100'>Google Login</button>
 
             }
             {errorMessage}
