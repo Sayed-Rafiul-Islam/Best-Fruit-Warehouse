@@ -13,8 +13,11 @@ import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import MyItems from './Pages/MyItems/MyItems';
 import Header from './Pages/Header/Header';
+import { useState } from 'react';
 
 function App() {
+
+  // className='fixed-top nav' style={{ left: visible ? '-300px' : '-550px' }}
   return (
     <div>
       <Header></Header>

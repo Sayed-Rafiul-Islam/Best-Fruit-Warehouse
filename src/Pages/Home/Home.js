@@ -4,6 +4,7 @@ import { Spinner } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import Header from "../Header/Header";
 import Item from "../Item/Item";
+import OffCanvas from "../OffCanvas/OffCanvas";
 
 const Home = () => {
     const [items, setItems] = useState([]);
