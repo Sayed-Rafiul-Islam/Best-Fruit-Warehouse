@@ -19,22 +19,26 @@ const Home = () => {
     return (
         <div className="d-flex flex-column justify-center">
             <div className="mb-5">
-                <img className="w-100" src="https://i.ibb.co/MnSKtcN/banner.jpg" alt="" />
+                <img className="w-100" src="https://i.ibb.co/XbcPwgX/banner.jpg" alt="" />
             </div>
             <Header></Header>
+
+            {/* Inventory Items section */}
+
             <Spinner style={{ display: `${items[0]?._id ? 'none' : 'block'}` }} className="spinner-border mx-auto" role="status">
-
             </Spinner>
-            <div className="row container-fluid mx-auto">
-                {
-                    homeItems.map(item => <Item
-                        key={item._id}
-                        item={item}
-                    ></Item>)
-                }
-
+            <div className="container-fluid">
+                <div className="row mx-auto">
+                    {
+                        homeItems.map(item => <Item
+                            key={item._id}
+                            item={item}
+                        ></Item>)
+                    }
+                </div>
+                <button className="btn btn-dark d-block mx-auto"><Link className="text-white text-decoration-none" to={'/manageInventory'}>Manage Inventory</Link></button>
             </div>
-            <button><Link to={'/manageInventory'}>Manage Inventory</Link></button>
+
             <div><p>section-1</p></div>W
             <div><p>section-2</p></div>
             <div><p>footer</p></div>

@@ -78,7 +78,7 @@ const ManageInventory = () => {
                         <div>
                             {
                                 loading ?
-                                    <h1 className='text-danger'>You did not add any items</h1>
+                                    <h1 className='text-danger'>No items to show !</h1>
                                     :
                                     <Spinner className="spinner-border mx-auto" role="status">
                                     </Spinner>

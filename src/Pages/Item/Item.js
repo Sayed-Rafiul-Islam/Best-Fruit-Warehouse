@@ -12,7 +12,7 @@ const Item = (props) => {
     }
 
     return (
-        <div className='col-12 col-lg-4'>
+        <div className='col-12 col-lg-4 my-2'>
             <Card className="position-relative card bg-dark text-white overflow-hidden">
                 <Card.Img className='card-img' src={image} alt="Card image" />
                 <Card.ImgOverlay className='dark-overlay'>
@@ -24,10 +24,11 @@ const Item = (props) => {
                         <Card.Text>Price : ${price}</Card.Text>
                         <Card.Text>Quantity : {quantity}</Card.Text>
                         <Card.Text>Supplier Name : {supplierName}</Card.Text>
+                        <button onClick={() => handleUpdate(_id)} className='btn btn-success w-100'>Update</button>
                     </div>
                 </Card.ImgOverlay>
             </Card>
-            <button onClick={() => handleUpdate(_id)} className='btn btn-dark w-100'>Update</button>
+
         </div>
     );
 };
