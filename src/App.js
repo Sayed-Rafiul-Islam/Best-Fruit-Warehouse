@@ -12,11 +12,12 @@ import NotFound from './Pages/NotFound/NotFound';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import MyItems from './Pages/MyItems/MyItems';
+import Header from './Pages/Header/Header';
 
 function App() {
   return (
     <div>
-
+      <Header></Header>
       <Routes>
         <Route path='/' element={<Home></Home>}></Route>
         <Route path='/home' element={<Home></Home>}></Route>

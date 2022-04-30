@@ -13,16 +13,16 @@ const Header = () => {
         signOut(auth);
     }
     return (
-        <div className='my-3 header fixed-top d-flex align-items-center'>
-            <nav className='d-flex align-items-center justify-content-between container'>
-                <div className='d-flex'>
+        <div className='my-lg-3 header fixed-top d-flex align-items-center'>
+            <nav className='d-flex text-left flex-lg-row flex-column align-items-center justify-content-between container'>
+                <div className='d-flex  flex-lg-row flex-column'>
                     <CustomLink className='link' to='/home'><span className='link'>Home</span></CustomLink>
                     <CustomLink className='link' to='/blogs'><span className='link'>BLOGS</span></CustomLink>
                 </div>
                 <div className='d-flex'>
                     {
                         user ?
-                            <div className='d-flex align-items-center'>
+                            <div className='d-flex flex-lg-row flex-column align-items-center'>
                                 <CustomLink className='link' to='/addInventoryItem'><span className='link'>ADD ITEM</span></CustomLink>
                                 <CustomLink className='link' to='/manageInventory'><span className='link'>MANAGE ITEMS</span></CustomLink>
                                 <CustomLink className='link' to='/myItems'> <span className='link'>MY ITEMS</span></CustomLink>

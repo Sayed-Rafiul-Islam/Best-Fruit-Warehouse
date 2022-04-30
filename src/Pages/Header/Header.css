@@ -12,3 +12,11 @@
     height: 60px;
     background-color: rgba(16, 16, 16, 0.444);
 }
+
+@media (max-width: 576px) {
+    .header {
+        margin-top: 20px;
+        height: 150px;
+        position: absolute
+    }
+}

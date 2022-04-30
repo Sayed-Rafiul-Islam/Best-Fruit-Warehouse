@@ -19,9 +19,8 @@ const Home = () => {
     return (
         <div className="d-flex flex-column justify-center">
             <div className="mb-5">
-                <img className="w-100" src="https://i.ibb.co/XbcPwgX/banner.jpg" alt="" />
+                <img className="img-fluid" src="https://i.ibb.co/gSC7pyN/banner.jpg" alt="" />
             </div>
-            <Header></Header>
 
             {/* Inventory Items section */}
 
@@ -39,7 +38,7 @@ const Home = () => {
                 <button className="btn btn-dark d-block mx-auto"><Link className="text-white text-decoration-none" to={'/manageInventory'}>Manage Inventory</Link></button>
             </div>
 
-            <div><p>section-1</p></div>W
+            <div><p>section-1</p></div>
             <div><p>section-2</p></div>
             <div><p>footer</p></div>
         </div>
