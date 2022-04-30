@@ -61,6 +61,7 @@ const MyItems = () => {
                                     <th>Quantity</th>
                                     <th>Supplier Name</th>
                                     <th>Thumbnail</th>
+                                    <th> </th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -79,7 +80,7 @@ const MyItems = () => {
                                 loading ?
                                     <h1 className='text-danger'>You did not add any items</h1>
                                     :
-                                    <Spinner className="spinner-border mx-auto" role="status">
+                                    <Spinner className="spinner-border mx-auto" variant='success' role="status">
                                     </Spinner>
                             }
                         </div>

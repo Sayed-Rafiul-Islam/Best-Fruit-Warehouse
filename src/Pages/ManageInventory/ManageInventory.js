@@ -62,6 +62,7 @@ const ManageInventory = () => {
                                     <th>Quantity</th>
                                     <th>Supplier Name</th>
                                     <th>Thumbnail</th>
+                                    <th> </th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -80,7 +81,7 @@ const ManageInventory = () => {
                                 loading ?
                                     <h1 className='text-danger'>No items to show !</h1>
                                     :
-                                    <Spinner className="spinner-border mx-auto" role="status">
+                                    <Spinner className="spinner-border d-block mx-auto" variant='success' role="status">
                                     </Spinner>
                             }
                         </div>

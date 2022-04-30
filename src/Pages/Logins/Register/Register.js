@@ -55,7 +55,7 @@ const Register = () => {
                     </Form.Group>
                     {
                         loading ?
-                            <Spinner className='d-block mx-auto' animation="border" role="status">
+                            <Spinner className='d-block mx-auto' variant='success' animation="border" role="status">
                             </Spinner>
                             :
                             <Button className='w-100 mb-2' variant="success" type="submit">

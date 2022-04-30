@@ -74,17 +74,17 @@ const Inventory = () => {
     const navigate = useNavigate();
     const navToManageInventory = () => navigate('/manageInventory');
     return (
-        <div className='mt-5 pt-5 text-center'>
-            <h1 className='mt-lg-0 mt-5 pt-lg-0 pt-5'>INVENTORY</h1>
-            <p><i className='text-success'>Update Item</i></p>
+        <div className='mt-5 pt-lg-5 text-center'>
+            <h1 className='text-success'>INVENTORY</h1>
+            <p><i className='text-success mb-4'>Update Item</i></p>
             <div className=''>
                 {
                     item?._id ?
                         <Card className='mx-auto' style={{ width: '18rem' }}>
                             <Card.Img variant="top" src={image} />
                             <Card.Body>
-                                <Card.Title>{name}</Card.Title>
-                                <Card.Text className='text-info'>
+                                <Card.Title className='text-success'>{name}</Card.Title>
+                                <Card.Text className='text-success'>
                                     ID : {_id}
                                 </Card.Text>
                                 <Card.Text>
@@ -97,7 +97,7 @@ const Inventory = () => {
                                 <ListGroupItem>Supplier Name : {supplierName}</ListGroupItem>
                             </ListGroup>
                             <Card.Body>
-                                <div className='ms-5'>
+                                <div className=''>
                                     <InputGroup className="">
                                         <Form onSubmit={handleRestock} className='w-100'>
                                             <Form.Group className="mb-3" controlId="formBasicNumber">
@@ -110,17 +110,17 @@ const Inventory = () => {
                                     </InputGroup>
                                 </div>
                                 <button style={{ display: del === 'disable' && "none" }} onClick={() => handleDelete(1)} className='btn btn-danger d-block w-100 mb-5'>Delete</button>
-                                <button onClick={handleUpdateItem} className='btn btn-info'>Update</button>
+                                <button onClick={handleUpdateItem} className='btn btn-outline-success'>Update</button>
                             </Card.Body>
                         </Card>
                         :
-                        <Spinner className="spinner-border mx-auto" role="status">
+                        <Spinner className="spinner-border mx-auto" variant='success' role="status">
                         </Spinner>
                 }
 
 
             </div>
-            <button onClick={navToManageInventory} className='btn btn-outline-success my-5 w-50'>Manage Inventory</button>
+            <button onClick={navToManageInventory} className='btn btn-success my-5 w-50'>Manage Inventory</button>
         </div >
     );
 };
