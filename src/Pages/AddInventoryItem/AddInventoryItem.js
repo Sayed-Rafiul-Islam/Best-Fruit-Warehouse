@@ -4,6 +4,7 @@ import { Form, Spinner, Button } from 'react-bootstrap';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { toast } from 'react-toastify';
 import auth from '../../firebase.init';
+import './AddInventoryItem.css'
 
 
 
@@ -43,9 +44,9 @@ const AddInventoryItem = () => {
 
     }
     return (
-        <div>
-            <h1>AddInventoryItem</h1>
-            <Form onSubmit={handleAddItem} className='w-50'>
+        <div className='mt-5 pt-5 '>
+            <h1 className='text-center mt-lg-0 mt-5 pt-lg-0 pt-5'>ADD ITEM</h1>
+            <Form onSubmit={handleAddItem} className='mt-lg-4 mx-auto sm-width'>
                 <Form.Group className="mb-3" controlId="formBasicName">
                     <Form.Control name='name' type="text" placeholder="Name" required />
                 </Form.Group>
@@ -64,7 +65,7 @@ const AddInventoryItem = () => {
                 <Form.Group className="mb-3" controlId="formBasicDescription">
                     <Form.Control name='supplierName' type="text" placeholder="Supplier Name" required />
                 </Form.Group>
-                <Button className='w-100 mb-2' variant="primary" type="submit">
+                <Button className='w-100 mb-2' variant="success" type="submit">
                     Add Item
                 </Button>
             </Form>
