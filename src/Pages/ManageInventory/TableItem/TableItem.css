@@ -1,0 +1,9 @@
+.img-width {
+    width: 25%;
+}
+
+@media (max-width: 576px) {
+    .img-width {
+        width: 80%;
+    }
+}

@@ -47,13 +47,13 @@ const ManageInventory = () => {
     }
 
     return (
-        <div>
-            <h1>manage inventory</h1>
+        <div className='mt-5 pt-5'>
+            <h1 className='text-center mt-lg-0 mt-5 pt-lg-0 pt-5 mb-4'>MANAGE INVENTORY ITEMS</h1>
 
             <div className='container'>
                 {
                     items[0]?._id ?
-                        <Table responsive="lg">
+                        <Table hover responsive="sm">
                             <thead>
                                 <tr>
                                     <th>Id</th>
@@ -88,7 +88,7 @@ const ManageInventory = () => {
 
 
             </div>
-            <button onClick={navToAddInventoryItem} className='btn btn-dark'>Add New Item</button>
+            <button onClick={navToAddInventoryItem} className='btn btn-success d-block w-50 mx-auto my-5'>Add New Item</button>
         </div>
     );
 };

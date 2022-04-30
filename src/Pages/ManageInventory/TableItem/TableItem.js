@@ -1,4 +1,5 @@
 import React from 'react';
+import './TableItem.css'
 
 const TableItem = (props) => {
     const { _id, name, price, quantity, supplierName, image } = props.item;
@@ -10,7 +11,7 @@ const TableItem = (props) => {
             <td className='align-middle'>{price}</td>
             <td className='align-middle'>{quantity}</td>
             <td className='align-middle'>{supplierName}</td>
-            <td className='w-25'><img className='img-thumbnail w-25' src={image} alt="" /></td>
+            <td className='w-25'><img className='img-thumbnail img-width' src={image} alt="" /></td>
 
             <td className='align-middle'><button onClick={() => handleItemDelete(_id)} className='btn btn-danger'>Delete</button></td>
 

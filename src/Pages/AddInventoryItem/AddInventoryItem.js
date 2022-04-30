@@ -44,7 +44,7 @@ const AddInventoryItem = () => {
 
     }
     return (
-        <div className='mt-5 pt-5 '>
+        <div className='mt-5 pt-5'>
             <h1 className='text-center mt-lg-0 mt-5 pt-lg-0 pt-5'>ADD ITEM</h1>
             <Form onSubmit={handleAddItem} className='mt-lg-4 mx-auto sm-width'>
                 <Form.Group className="mb-3" controlId="formBasicName">

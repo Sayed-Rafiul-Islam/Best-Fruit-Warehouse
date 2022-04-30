@@ -76,7 +76,7 @@ const Inventory = () => {
     return (
         <div className='mt-5 pt-5 text-center'>
             <h1 className='mt-lg-0 mt-5 pt-lg-0 pt-5'>INVENTORY</h1>
-            <p><i>Update Item</i></p>
+            <p><i className='text-success'>Update Item</i></p>
             <div className=''>
                 {
                     item?._id ?
