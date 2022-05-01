@@ -1,18 +1,20 @@
 import axios from 'axios';
 import React from 'react';
-import { Form, Spinner, Button } from 'react-bootstrap';
+import { Form, Button } from 'react-bootstrap';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { toast } from 'react-toastify';
 import auth from '../../firebase.init';
 import './AddInventoryItem.css'
 
-
-
 const AddInventoryItem = () => {
+
+    // email taken for my item's filtering 
     const [user] = useAuthState(auth);
     const email = user?.email;
 
+    // handle add item 
     const handleAddItem = async e => {
+        // data taken 
         e.preventDefault();
         const name = e.target.name.value;
         const image = e.target.image.value;
@@ -21,6 +23,7 @@ const AddInventoryItem = () => {
         const quantity = e.target.quantity.value;
         const supplierName = e.target.supplierName.value;
 
+        // data converged in an objects
         const newItem = {
             name: name,
             image: image,
@@ -30,9 +33,8 @@ const AddInventoryItem = () => {
             supplierName: supplierName,
             email: email
         }
-        console.log(newItem);
 
-
+        // data send to backend 
         await axios.post(`https://fast-sands-43043.herokuapp.com/addInventoryItem`, newItem)
             .then(response => {
                 const { data } = response;

@@ -1,7 +1,3 @@
-.link {
-    color: white;
-}
-
 .link:hover {
     color: orange;
     transition: .2s;
