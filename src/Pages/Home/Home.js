@@ -9,17 +9,18 @@ import './Home.css'
 
 
 const Home = () => {
+
+    // loaded items from mongoDB
     const [items, setItems] = useState([]);
     const homeItems = items.slice(0, 6);
 
+    // load data
     useEffect(() => {
         const getItems = async () => {
             const data = await axios.get('https://fast-sands-43043.herokuapp.com/item');
-            console.log(data.data)
             setItems(data.data);
         }
         getItems();
-
     }, [])
 
     return (
@@ -62,6 +63,8 @@ const Home = () => {
                     <Founders></Founders>
                 </div>
             </div>
+
+            {/* Footer  */}
             <div className="bg-dark w-100 mt-4 py-4 text-center text-light">
                 <h3><span className="text-success">Best Fruits</span> Warehouse</h3>
                 <small>Copyright © 2022 Physics with Fun</small> <br />

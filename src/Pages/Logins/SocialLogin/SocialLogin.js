@@ -6,18 +6,20 @@ import { toast } from 'react-toastify';
 import auth from '../../../firebase.init';
 
 const SocialLogin = () => {
+
+    // handle google sign in 
     const [signInWithGoogle, user, loading, error] = useSignInWithGoogle(auth);
 
-
+    // navigation section
     const navigate = useNavigate();
     const location = useLocation();
     let from = location.state?.from?.pathname || "/";
-
     if (user) {
         toast('Login Successful');
         navigate(from, { replace: true });
     }
 
+    //  error message 
     let errorMessage;
     if (error) {
         errorMessage = <p className='text-danger text-center'>Error: {error?.message}</p>;

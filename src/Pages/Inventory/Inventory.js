@@ -1,14 +1,16 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import { Button, Card, Form, InputGroup, ListGroup, ListGroupItem, Spinner } from 'react-bootstrap';
-import { useNavigate, useParams } from 'react-router';
+import { useParams } from 'react-router';
 import { toast } from 'react-toastify';
 
 const Inventory = () => {
-    const [item, setItem] = useState({});
-    console.log(item)
-    const { id } = useParams();
 
+    //  loaded data for specific id
+    const [item, setItem] = useState({});
+    let { _id, name, image, description, quantity, price, supplierName } = item;
+
+    const { id } = useParams();
     useEffect(() => {
         const getItem = async () => {
             const data = await axios.get(`https://fast-sands-43043.herokuapp.com/inventory/${id}`);
@@ -17,7 +19,8 @@ const Inventory = () => {
         getItem();
     }, [id])
 
-    let { _id, name, image, description, quantity, price, supplierName } = item;
+
+    // handle quantity and amount
     quantity = parseInt(quantity);
     let [amount, setAmount] = useState(-2000);
     const [del, setDel] = useState(false);
@@ -25,7 +28,7 @@ const Inventory = () => {
         amount = quantity;
     }
 
-
+    // handle restock form filed 
     const handleRestock = e => {
         e.preventDefault();
         const add = parseInt(e.target.number.value);
@@ -38,7 +41,7 @@ const Inventory = () => {
         }
     }
 
-
+    // handle delete button
     const handleDelete = remove => {
         const newAmount = amount - remove;
         if (newAmount > 0) {
@@ -48,13 +51,13 @@ const Inventory = () => {
             alert('This is the last piece ! If you want to Stock it out, please remove the item from manage inventory')
             setDel(true);
         }
-
     }
 
+    // update item 
     quantity = amount;
     const updatedItem = { _id, name, image, description, quantity, price, supplierName };
-    console.log(updatedItem);
 
+    //  updated data send to  mongoDB
     const handleUpdateItem = () => {
         fetch(`https://fast-sands-43043.herokuapp.com/inventory/${_id}`, {
             method: 'PUT',
@@ -70,9 +73,6 @@ const Inventory = () => {
                 }
             })
     }
-
-    const navigate = useNavigate();
-    const navToManageInventory = () => navigate('/manageInventory');
     return (
         <div className='my-5 pt-lg-5 text-center'>
             <h1 className='text-success'>INVENTORY</h1>
@@ -117,10 +117,7 @@ const Inventory = () => {
                         <Spinner className="spinner-border mx-auto" variant='success' role="status">
                         </Spinner>
                 }
-
-
             </div>
-            {/* <button onClick={navToManageInventory} className='btn btn-success my-5 w-50'>Manage Inventory</button> */}
         </div >
     );
 };

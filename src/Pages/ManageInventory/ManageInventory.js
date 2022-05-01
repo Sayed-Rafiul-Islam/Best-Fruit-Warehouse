@@ -6,6 +6,7 @@ import TableItem from './TableItem/TableItem';
 
 const ManageInventory = () => {
 
+    // if no data to show, ever spinning spinner handling section
     const [loading, setLoading] = useState(false);
     const neverLoad = () => {
 
@@ -16,12 +17,12 @@ const ManageInventory = () => {
     setTimeout(neverLoad, 15000);
 
 
-
+    // navigation section
     const navigate = useNavigate();
     const navToAddInventoryItem = () => navigate('/addInventoryItem');
 
+    // data loading section for table
     const [items, setItems] = useState([]);
-
     useState(() => {
         const getItems = async () => {
             const data = await axios.get('https://fast-sands-43043.herokuapp.com/item');
@@ -29,6 +30,7 @@ const ManageInventory = () => {
         }
         getItems();
 
+        // delete item handling section
     }, [])
     const handleItemDelete = _id => {
         const proceed = window.confirm('Are you sure?')
@@ -40,7 +42,6 @@ const ManageInventory = () => {
                 .then(res => res.json())
                 .then(data => {
                     const newItems = items.filter(item => item?._id !== _id);
-                    console.log(newItems)
                     setItems(newItems);
                 })
         }

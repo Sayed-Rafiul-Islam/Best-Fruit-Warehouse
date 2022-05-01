@@ -6,11 +6,11 @@ import CustomLink from '../CustomLink/CustomLink';
 import './Header.css';
 
 const Header = () => {
+    // toggle menu bar button function for small devices
     const [visible, setVisible] = useState(false);
 
-
+    // sign Out 
     const [user] = useAuthState(auth);
-
     const handleLogout = () => {
         signOut(auth);
     }

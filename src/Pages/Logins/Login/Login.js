@@ -9,13 +9,16 @@ import './Login.css'
 import axios from 'axios';
 
 const Login = () => {
+    // navigation section
     const navigate = useNavigate();
     const location = useLocation();
     let from = location.state?.from?.pathname || "/";
 
+    // reset password auth
     const [email, setEmail] = useState('');
     const [sendPasswordResetEmail, sending, error1] = useSendPasswordResetEmail(auth);
 
+    //  sign in with mail handle
     const [
         signInWithEmailAndPassword,
         user,
@@ -23,20 +26,21 @@ const Login = () => {
         error,
     ] = useSignInWithEmailAndPassword(auth);
 
-
     const handleLogin = async e => {
         e.preventDefault();
 
+        // taken values via form
         const email = e.target.email.value;
         const password = e.target.password.value;
 
         await signInWithEmailAndPassword(email, password);
 
+        // email sent to database and access token stored in local storage
         const { data } = await axios.post('https://fast-sands-43043.herokuapp.com/login', { email })
         localStorage.setItem('accessToken', data.accessToken);
-
     }
 
+    // error message and toast if user logs in
     let errorMessage;
     if (error) {
         errorMessage = <p className='text-danger text-center'>{error?.message}</p>;

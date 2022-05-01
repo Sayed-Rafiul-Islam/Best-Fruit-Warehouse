@@ -11,7 +11,7 @@ import './Register.css'
 
 const Register = () => {
 
-    const navigate = useNavigate();
+    // handle registration
     const [
         createUserWithEmailAndPassword,
         user,
@@ -28,14 +28,17 @@ const Register = () => {
         await createUserWithEmailAndPassword(email, password);
     }
 
+    // error message 
     let errorMessage;
     if (error) {
         errorMessage = <p className='text-danger'>{error.message}</p>;
     }
+
+    //  navigation section
+    const navigate = useNavigate();
     if (user) {
         toast('Verification mail has been sent');
         navigate('/home')
-
     }
 
     return (
