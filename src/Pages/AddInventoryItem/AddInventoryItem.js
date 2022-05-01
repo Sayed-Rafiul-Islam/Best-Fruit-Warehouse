@@ -23,6 +23,15 @@ const AddInventoryItem = () => {
         const quantity = e.target.quantity.value;
         const supplierName = e.target.supplierName.value;
 
+        // field clear
+        e.target.name.value = '';
+        e.target.image.value = '';
+        e.target.description.value = '';
+        e.target.price.value = '';
+        e.target.quantity.value = '';
+        e.target.supplierName.value = '';
+
+
         // data converged in an objects
         const newItem = {
             name: name,
@@ -40,7 +49,7 @@ const AddInventoryItem = () => {
                 const { data } = response;
                 console.log(data.insertedId)
                 if (data.insertedId) {
-                    toast('Your data has been sent')
+                    toast('Item Added')
                 }
             })
 

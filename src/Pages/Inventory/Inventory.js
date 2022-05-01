@@ -42,6 +42,7 @@ const Inventory = () => {
         if (add > 0) {
             const newAmount = amount + add;
             setAmount(newAmount);
+            e.target.number.value = '';
         }
         if (add < 0) {
             alert('Restocking amount must be positive !!')
@@ -70,22 +71,22 @@ const Inventory = () => {
 
     //  updated data send to  mongoDB
     const handleUpdateItem = () => {
-        console.log(quantity)
-        fetch(`https://fast-sands-43043.herokuapp.com/inventory/${_id}`, {
-            method: 'PUT',
-            headers: {
-                'content-type': 'application/json'
-            },
-            body: JSON.stringify(updatedItem)
-        })
-            .then(res => res.json())
-            .then(data => {
-                if (data) {
-                    toast('Item updated')
-                }
+        if (quantity !== 0) {
+            fetch(`https://fast-sands-43043.herokuapp.com/inventory/${_id}`, {
+                method: 'PUT',
+                headers: {
+                    'content-type': 'application/json'
+                },
+                body: JSON.stringify(updatedItem)
             })
-
-        if (quantity === 0) {
+                .then(res => res.json())
+                .then(data => {
+                    if (data) {
+                        toast('Item updated')
+                    }
+                })
+        }
+        else {
             const proceed = window.confirm('Are you sure?')
             if (proceed) {
                 const url = `https://fast-sands-43043.herokuapp.com/item/${_id}`;
@@ -94,6 +95,7 @@ const Inventory = () => {
                 })
                     .then(res => res.json())
                     .then(data => {
+                        toast('Item stocked out')
                         navigate('/home')
                     })
             }
