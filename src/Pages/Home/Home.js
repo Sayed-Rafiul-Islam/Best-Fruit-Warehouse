@@ -13,7 +13,7 @@ const Home = () => {
     const homeItems = items.slice(0, 6);
 
     const getItems = async () => {
-        const data = await axios.get('http://localhost:5000/item');
+        const data = await axios.get('https://fast-sands-43043.herokuapp.com/item');
         setItems(data.data);
     }
     getItems();

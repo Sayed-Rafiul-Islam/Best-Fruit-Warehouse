@@ -24,7 +24,7 @@ const ManageInventory = () => {
 
     useState(() => {
         const getItems = async () => {
-            const data = await axios.get('http://localhost:5000/item');
+            const data = await axios.get('https://fast-sands-43043.herokuapp.com/item');
             setItems(data.data);
         }
         getItems();
@@ -33,7 +33,7 @@ const ManageInventory = () => {
     const handleItemDelete = _id => {
         const proceed = window.confirm('Are you sure?')
         if (proceed) {
-            const url = `http://localhost:5000/item/${_id}`;
+            const url = `https://fast-sands-43043.herokuapp.com/item/${_id}`;
             fetch(url, {
                 method: 'DELETE'
             })

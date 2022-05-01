@@ -23,7 +23,7 @@ const MyItems = () => {
     useEffect(() => {
         const getItem = async () => {
             const email = user?.email;
-            const { data } = await axios.get(`http://localhost:5000/myItems?email=${email}`);
+            const { data } = await axios.get(`https://fast-sands-43043.herokuapp.com/myItems?email=${email}`);
             setMyItems(data)
         }
         getItem();
@@ -32,7 +32,7 @@ const MyItems = () => {
     const handleMyItemDelete = _id => {
         const proceed = window.confirm('Are you sure?')
         if (proceed) {
-            const url = `http://localhost:5000/item/${_id}`;
+            const url = `https://fast-sands-43043.herokuapp.com/item/${_id}`;
             fetch(url, {
                 method: 'DELETE'
             })

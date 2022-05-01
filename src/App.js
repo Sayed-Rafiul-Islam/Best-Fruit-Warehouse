@@ -31,7 +31,6 @@ function App() {
         }></Route>
         <Route path='/manageInventory' element={<ManageInventory></ManageInventory>}></Route>
         <Route path='/addInventoryItem' element={<AddInventoryItem></AddInventoryItem>}></Route>
-        <Route path='/addInventoryItem' element={<AddInventoryItem></AddInventoryItem>}></Route>
         <Route path='/myItems' element={<MyItems></MyItems>}></Route>
         <Route path="/login" element={<Login></Login>}></Route>
         <Route path="register" element={<Register></Register>}></Route>
