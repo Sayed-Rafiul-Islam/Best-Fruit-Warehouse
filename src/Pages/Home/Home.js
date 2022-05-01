@@ -1,5 +1,5 @@
 import axios from "axios";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Spinner } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import Founders from "../Founders/Founders";
@@ -12,12 +12,15 @@ const Home = () => {
     const [items, setItems] = useState([]);
     const homeItems = items.slice(0, 6);
 
-    const getItems = async () => {
-        const data = await axios.get('https://fast-sands-43043.herokuapp.com/item');
-        setItems(data.data);
-    }
-    getItems();
+    useEffect(() => {
+        const getItems = async () => {
+            const data = await axios.get('http://localhost:5000/item');
+            console.log(data.data)
+            setItems(data.data);
+        }
+        getItems();
 
+    }, [])
 
     return (
         <div className="d-flex flex-column">

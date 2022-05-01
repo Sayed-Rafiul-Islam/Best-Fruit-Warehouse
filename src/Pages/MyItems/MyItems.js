@@ -26,7 +26,7 @@ const MyItems = () => {
         const getItem = async () => {
             const email = user?.email;
             if (email) {
-                const { data } = await axios.get(`https://fast-sands-43043.herokuapp.com/myItems?email=${email}`, {
+                const { data } = await axios.get(`http://localhost:5000/myItems?email=${email}`, {
                     headers: {
                         authorization: `Bearer ${localStorage.getItem('accessToken')}`
                     }
@@ -40,7 +40,7 @@ const MyItems = () => {
     const handleMyItemDelete = _id => {
         const proceed = window.confirm('Are you sure?')
         if (proceed) {
-            const url = `https://fast-sands-43043.herokuapp.com/item/${_id}`;
+            const url = `http://localhost:5000/item/${_id}`;
             fetch(url, {
                 method: 'DELETE'
             })
