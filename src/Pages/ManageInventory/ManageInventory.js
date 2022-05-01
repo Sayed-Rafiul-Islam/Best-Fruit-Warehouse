@@ -8,8 +8,8 @@ const ManageInventory = () => {
 
     const [loading, setLoading] = useState(false);
     const neverLoad = () => {
-        const loadingItem = items[0]?._id;
-        if (!loadingItem) {
+
+        if (items.length) {
             setLoading(true);
         }
     }
@@ -52,7 +52,7 @@ const ManageInventory = () => {
 
             <div className='container'>
                 {
-                    items[0]?._id ?
+                    items.length ?
                         <Table hover variant='success' responsive="sm">
                             <thead>
                                 <tr>

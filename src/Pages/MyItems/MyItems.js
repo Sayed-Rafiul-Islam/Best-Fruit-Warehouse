@@ -7,27 +7,35 @@ import MyItemTable from '../MyItemTable/MyItemTable';
 
 const MyItems = () => {
 
+    const [myItems, setMyItems] = useState([]);
     const [loading, setLoading] = useState(false);
     const neverLoad = () => {
-        const loadingItem = myItems[0]?._id;
-        if (!loadingItem) {
+
+        if (myItems.length) {
             setLoading(true);
         }
     }
-    setTimeout(neverLoad, 9000);
+    setTimeout(neverLoad, 15000);
 
 
-    const [myItems, setMyItems] = useState({});
+
+
     const [user] = useAuthState(auth);
 
     useEffect(() => {
         const getItem = async () => {
             const email = user?.email;
-            const { data } = await axios.get(`https://fast-sands-43043.herokuapp.com/myItems?email=${email}`);
-            setMyItems(data)
+            if (email) {
+                const { data } = await axios.get(`https://fast-sands-43043.herokuapp.com/myItems?email=${email}`, {
+                    headers: {
+                        authorization: `Bearer ${localStorage.getItem('accessToken')}`
+                    }
+                });
+                setMyItems(data)
+            }
         }
         getItem();
-    }, [user])
+    }, [user?.email])
 
     const handleMyItemDelete = _id => {
         const proceed = window.confirm('Are you sure?')
@@ -51,7 +59,7 @@ const MyItems = () => {
             <h1 className='mb-4' >MY <span className='text-success'>ITEMS</span></h1>
             <div className='container'>
                 {
-                    myItems[0]?._id ?
+                    myItems.length ?
                         <Table hover variant='success' responsive="sm">
                             <thead>
                                 <tr>
@@ -78,12 +86,14 @@ const MyItems = () => {
                         <div>
                             {
                                 loading ?
-                                    <h1 className='text-danger'>You did not add any items</h1>
+                                    <h1 className='text-danger'>No items to show !</h1>
                                     :
-                                    <Spinner className="spinner-border mx-auto" variant='success' role="status">
+                                    <Spinner className="spinner-border d-block mx-auto" variant='success' role="status">
                                     </Spinner>
                             }
                         </div>
+
+
 
                 }
 

@@ -7,7 +7,6 @@ import './Header.css';
 
 const Header = () => {
     const [visible, setVisible] = useState(false);
-    console.log(visible)
 
 
     const [user] = useAuthState(auth);

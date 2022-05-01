@@ -6,6 +6,7 @@ import auth from '../../../firebase.init';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import SocialLogin from '../SocialLogin/SocialLogin';
 import './Login.css'
+import axios from 'axios';
 
 const Login = () => {
     const navigate = useNavigate();
@@ -13,7 +14,6 @@ const Login = () => {
     let from = location.state?.from?.pathname || "/";
 
     const [email, setEmail] = useState('');
-    console.log(email)
     const [sendPasswordResetEmail, sending, error1] = useSendPasswordResetEmail(auth);
 
     const [
@@ -30,9 +30,13 @@ const Login = () => {
         const email = e.target.email.value;
         const password = e.target.password.value;
 
-        console.log(email, password)
-
         await signInWithEmailAndPassword(email, password);
+
+        console.log()
+        const { data } = await axios.post('http://localhost:5000/login', { email })
+        console.log(data)
+        localStorage.setItem('accessToken', data.accessToken);
+        navigate(from, { replace: true });
 
     }
 
@@ -42,8 +46,6 @@ const Login = () => {
     }
     if (user) {
         toast('Successfully Logged In');
-        navigate(from, { replace: true });
-
     }
     return (
         <div className='container mt-5 pt-5'>
