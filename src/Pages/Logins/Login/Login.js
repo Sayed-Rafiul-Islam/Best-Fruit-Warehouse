@@ -32,6 +32,7 @@ const Login = () => {
         // taken values via form
         const email = e.target.email.value;
         const password = e.target.password.value;
+        console.log(email)
 
         await signInWithEmailAndPassword(email, password);
 

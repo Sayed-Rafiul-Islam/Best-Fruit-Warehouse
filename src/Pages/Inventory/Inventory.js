@@ -11,6 +11,7 @@ const Inventory = () => {
     const [item, setItem] = useState({});
     let { _id, name, image, description, quantity, price, supplierName } = item;
 
+
     const { id } = useParams();
     useEffect(() => {
         const getItem = async () => {
@@ -29,9 +30,12 @@ const Inventory = () => {
         amount = quantity;
     }
 
+    const [stockout, setStockout] = useState(false);
+
     // handle restock form filed 
     const handleRestock = e => {
         e.preventDefault();
+        setStockout(false);
         const add = parseInt(e.target.number.value);
         if (add > 0) {
             const newAmount = amount + add;
@@ -47,6 +51,10 @@ const Inventory = () => {
         const newAmount = amount - remove;
         if (newAmount > 0) {
             setAmount(newAmount);
+        }
+        else if (newAmount === 0) {
+            setStockout(true);
+            setAmount(0)
         }
         else {
             alert('This is the last piece ! If you want to Stock it out, please remove the item from manage inventory')
@@ -110,7 +118,11 @@ const Inventory = () => {
                                         </Form>
                                     </InputGroup>
                                 </div>
-                                <button style={{ display: del === 'disable' && "none" }} onClick={() => handleDelivered(1)} className='btn btn-danger d-block w-100 mb-5'>Delivered</button>
+                                {stockout ?
+                                    <button disabled className='btn btn-dark d-block w-100 mb-5'>StockOut</button>
+                                    :
+                                    <button style={{ display: del === 'disable' && "none" }} onClick={() => handleDelivered(1)} className='btn btn-danger d-block w-100 mb-5'>Delivered</button>
+                                }
                                 <button onClick={handleUpdateItem} className='btn btn-outline-success'>Update</button>
                             </Card.Body>
                         </Card>

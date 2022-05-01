@@ -14,10 +14,13 @@ const MyItems = () => {
     const [myItems, setMyItems] = useState([]);
     const [user] = useAuthState(auth);
 
+
     // if no data to show, ever spinning spinner handling section
     const [loading, setLoading] = useState(false);
     const neverLoad = () => {
+
         if (myItems.length) {
+
             setLoading(true);
         }
     }
@@ -29,12 +32,14 @@ const MyItems = () => {
         const getItem = async () => {
             const email = user?.email;
             if (email) {
+
                 try {
                     const { data } = await axios.get(`https://fast-sands-43043.herokuapp.com/myItems?email=${email}`, {
                         headers: {
                             authorization: `Bearer ${localStorage.getItem('accessToken')}`
                         }
                     });
+                    console.log(data)
                     setMyItems(data)
                 }
                 catch (error) {
@@ -52,7 +57,7 @@ const MyItems = () => {
     // handle specific item delete using specific id 
     const handleMyItemDelete = _id => {
         const proceed = window.confirm('Are you sure?')
-        if (proceed) {
+        if (true) {
             const url = `https://fast-sands-43043.herokuapp.com/item/${_id}`;
             fetch(url, {
                 method: 'DELETE'
