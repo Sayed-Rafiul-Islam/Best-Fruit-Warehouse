@@ -35,7 +35,7 @@ const MyItems = () => {
             }
         }
         getItem();
-    }, [user?.email])
+    }, [user])
 
     const handleMyItemDelete = _id => {
         const proceed = window.confirm('Are you sure?')
@@ -47,7 +47,6 @@ const MyItems = () => {
                 .then(res => res.json())
                 .then(data => {
                     const newItems = myItems.filter(myItem => myItem?._id !== _id);
-                    console.log(newItems)
                     setMyItems(newItems);
                 })
         }
