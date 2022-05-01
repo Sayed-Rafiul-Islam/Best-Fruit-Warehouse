@@ -1,11 +1,13 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import { Button, Card, Form, InputGroup, ListGroup, ListGroupItem, Spinner } from 'react-bootstrap';
-import { useParams } from 'react-router';
+import { useNavigate, useParams } from 'react-router';
 import { Link } from 'react-router-dom';
 import { toast } from 'react-toastify';
 
 const Inventory = () => {
+
+    const navigate = useNavigate();
 
     //  loaded data for specific id
     const [item, setItem] = useState({});
@@ -68,6 +70,7 @@ const Inventory = () => {
 
     //  updated data send to  mongoDB
     const handleUpdateItem = () => {
+        console.log(quantity)
         fetch(`https://fast-sands-43043.herokuapp.com/inventory/${_id}`, {
             method: 'PUT',
             headers: {
@@ -81,6 +84,20 @@ const Inventory = () => {
                     toast('Item updated')
                 }
             })
+
+        if (quantity === 0) {
+            const proceed = window.confirm('Are you sure?')
+            if (proceed) {
+                const url = `https://fast-sands-43043.herokuapp.com/item/${_id}`;
+                fetch(url, {
+                    method: 'DELETE'
+                })
+                    .then(res => res.json())
+                    .then(data => {
+                        navigate('/home')
+                    })
+            }
+        }
     }
     return (
         <div className='my-5 pt-lg-5 text-center'>
