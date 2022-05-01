@@ -32,11 +32,8 @@ const Login = () => {
 
         await signInWithEmailAndPassword(email, password);
 
-        console.log()
-        const { data } = await axios.post('http://localhost:5000/login', { email })
-        console.log(data)
+        const { data } = await axios.post('https://fast-sands-43043.herokuapp.com/login', { email })
         localStorage.setItem('accessToken', data.accessToken);
-        navigate(from, { replace: true });
 
     }
 
@@ -46,6 +43,7 @@ const Login = () => {
     }
     if (user) {
         toast('Successfully Logged In');
+        navigate(from, { replace: true });
     }
     return (
         <div className='container mt-5 pt-5'>

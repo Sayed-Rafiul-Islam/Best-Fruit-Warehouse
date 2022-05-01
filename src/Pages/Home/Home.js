@@ -14,7 +14,7 @@ const Home = () => {
 
     useEffect(() => {
         const getItems = async () => {
-            const data = await axios.get('http://localhost:5000/item');
+            const data = await axios.get('https://fast-sands-43043.herokuapp.com/item');
             console.log(data.data)
             setItems(data.data);
         }
