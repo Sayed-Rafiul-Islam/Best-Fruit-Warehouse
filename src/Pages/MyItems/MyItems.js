@@ -8,20 +8,23 @@ import auth from '../../firebase.init';
 import MyItemTable from '../MyItemTable/MyItemTable';
 
 const MyItems = () => {
-
+    // navigation section
     const navigate = useNavigate();
+
     const [myItems, setMyItems] = useState([]);
+    const [user] = useAuthState(auth);
+
+    // if no data to show, ever spinning spinner handling section
     const [loading, setLoading] = useState(false);
     const neverLoad = () => {
-
         if (myItems.length) {
             setLoading(true);
         }
     }
     setTimeout(neverLoad, 15000);
 
-    const [user] = useAuthState(auth);
 
+    // user's added table show filtered using email and restrict unauthorized access using access token
     useEffect(() => {
         const getItem = async () => {
             const email = user?.email;
@@ -46,6 +49,7 @@ const MyItems = () => {
         getItem();
     }, [user])
 
+    // handle specific item delete using specific id 
     const handleMyItemDelete = _id => {
         const proceed = window.confirm('Are you sure?')
         if (proceed) {
@@ -59,9 +63,8 @@ const MyItems = () => {
                     setMyItems(newItems);
                 })
         }
-
-
     }
+
     return (
         <div className='mt-5 pt-lg-5 text-center mb-4'>
             <h1 className='mb-4' >MY <span className='text-success'>ITEMS</span></h1>

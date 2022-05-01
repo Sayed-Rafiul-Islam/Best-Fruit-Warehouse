@@ -2,6 +2,7 @@ import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import { Button, Card, Form, InputGroup, ListGroup, ListGroupItem, Spinner } from 'react-bootstrap';
 import { useParams } from 'react-router';
+import { Link } from 'react-router-dom';
 import { toast } from 'react-toastify';
 
 const Inventory = () => {
@@ -118,6 +119,7 @@ const Inventory = () => {
                         </Spinner>
                 }
             </div>
+            <button className="btn btn-success d-block mx-auto mt-3 w-50"><Link className="text-white text-decoration-none" to={'/manageInventory'}>Manage Inventory</Link></button>
         </div >
     );
 };
