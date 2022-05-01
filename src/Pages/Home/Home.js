@@ -25,8 +25,9 @@ const Home = () => {
 
     return (
         <div className="d-flex flex-column">
+            {/* banner */}
             <div className="mb-5">
-                <img className="img-fluid" src="https://i.ibb.co/Q9hd5Ym/banner.jpg" alt="" />
+                <img className="img-fluid" src="https://i.ibb.co/VjbF2Y6/banner.jpg" alt="" />
             </div>
 
             {/* Inventory Items section */}

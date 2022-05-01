@@ -5,12 +5,12 @@ import './Item.css'
 
 const Item = (props) => {
     const { _id, name, image, description, price, quantity, supplierName } = props.item;
+
     const navigate = useNavigate();
 
     const handleUpdate = _id => {
         navigate(`/inventory/${_id}`)
     }
-
     return (
         <div className='col-12 col-lg-4 my-2'>
             <Card className="position-relative card bg-dark text-white overflow-hidden">
