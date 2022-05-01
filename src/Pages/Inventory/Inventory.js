@@ -41,8 +41,8 @@ const Inventory = () => {
         }
     }
 
-    // handle delete button
-    const handleDelete = remove => {
+    // handle Delivered button
+    const handleDelivered = remove => {
         const newAmount = amount - remove;
         if (newAmount > 0) {
             setAmount(newAmount);
@@ -109,7 +109,7 @@ const Inventory = () => {
                                         </Form>
                                     </InputGroup>
                                 </div>
-                                <button style={{ display: del === 'disable' && "none" }} onClick={() => handleDelete(1)} className='btn btn-danger d-block w-100 mb-5'>Delete</button>
+                                <button style={{ display: del === 'disable' && "none" }} onClick={() => handleDelivered(1)} className='btn btn-danger d-block w-100 mb-5'>Delivered</button>
                                 <button onClick={handleUpdateItem} className='btn btn-outline-success'>Update</button>
                             </Card.Body>
                         </Card>
