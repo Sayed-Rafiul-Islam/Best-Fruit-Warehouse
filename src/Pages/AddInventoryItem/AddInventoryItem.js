@@ -44,7 +44,7 @@ const AddInventoryItem = () => {
         }
 
         // data send to backend 
-        await axios.post(`http://localhost:5000/addInventoryItem`, newItem)
+        await axios.post(`https://fast-sands-43043.herokuapp.com/addInventoryItem`, newItem)
             .then(response => {
                 const { data } = response;
                 console.log(data.insertedId)
