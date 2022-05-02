@@ -140,13 +140,15 @@ const MyItems = () => {
                         </div>
                 }
             </div>
-            {
-                [...Array(count).keys()]
-                    .map(number => <button
-                        onClick={() => setPage(number)}
-                        className={number === page ? 'btn btn-outline-success bg-success text-light me-2' : 'btn btn-outline-success me-2 my-3'}
-                    >{number + 1}</button>)
-            }
+            <div className='mt-3'>
+                {
+                    [...Array(count).keys()]
+                        .map(number => <button
+                            onClick={() => setPage(number)}
+                            className={number === page ? 'btn btn-outline-success bg-success text-light me-2 mb-2' : 'btn btn-outline-success me-2 mb-2'}
+                        >{number + 1}</button>)
+                }
+            </div>
         </div>
     );
 };
