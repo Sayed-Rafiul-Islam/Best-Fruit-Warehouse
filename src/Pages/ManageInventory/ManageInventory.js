@@ -1,8 +1,9 @@
 import axios from 'axios';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Spinner, Table } from 'react-bootstrap';
 import { useNavigate } from 'react-router';
 import TableItem from './TableItem/TableItem';
+import './ManageInventory.css'
 
 const ManageInventory = () => {
 
@@ -17,21 +18,36 @@ const ManageInventory = () => {
     setTimeout(neverLoad, 15000);
 
 
+    // pagination
+    const [page, setPage] = useState(0);
+
+    const [pageCount, setPageCount] = useState(0);
+    useEffect(() => {
+        const getPageCount = async () => {
+            const { data } = await axios.get('https://fast-sands-43043.herokuapp.com/itemCount');
+            const count = data.count;
+            const pages = Math.ceil(count / 10);
+            setPageCount(pages)
+        }
+        getPageCount();
+    }, [])
+
+
     // navigation section
     const navigate = useNavigate();
     const navToAddInventoryItem = () => navigate('/addInventoryItem');
 
     // data loading section for table
     const [items, setItems] = useState([]);
-    useState(() => {
+    useEffect(() => {
         const getItems = async () => {
-            const data = await axios.get('https://fast-sands-43043.herokuapp.com/item');
+            const data = await axios.get(`https://fast-sands-43043.herokuapp.com/item?page=${page}`);
             setItems(data.data);
         }
         getItems();
+    }, [page])
 
-        // delete item handling section
-    }, [])
+    // delete item handling section
     const handleItemDelete = _id => {
         const proceed = window.confirm('Are you sure?')
         if (proceed) {
@@ -46,6 +62,7 @@ const ManageInventory = () => {
                 })
         }
     }
+
 
     return (
         <div className='mt-5 pt-lg-5'>
@@ -89,6 +106,15 @@ const ManageInventory = () => {
                 }
 
 
+            </div>
+            <div className='container'>
+                {
+                    [...Array(pageCount).keys()]
+                        .map(number => <button
+                            className={page === number ? 'bg-success text-white btn btn-outline-success mx-1 mb-2' : 'btn btn-outline-success mx-1 mb-2'}
+                            onClick={() => setPage(number)}
+                        >{number + 1}</button>)
+                }
             </div>
             <button onClick={navToAddInventoryItem} className='btn btn-success d-block w-50 mx-auto my-5'>Add New Item</button>
         </div>
