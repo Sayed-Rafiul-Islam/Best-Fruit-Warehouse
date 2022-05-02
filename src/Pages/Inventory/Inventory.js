@@ -14,6 +14,8 @@ const Inventory = () => {
     let { _id, name, image, description, quantity, price, supplierName } = item;
 
 
+
+
     const { id } = useParams();
     useEffect(() => {
         const getItem = async () => {
@@ -27,7 +29,6 @@ const Inventory = () => {
     // handle quantity and amount
     quantity = parseInt(quantity);
     let [amount, setAmount] = useState(-2000);
-    const [del, setDel] = useState(false);
     if (amount === -2000) {
         amount = quantity;
     }
@@ -37,16 +38,22 @@ const Inventory = () => {
 
     // update item 
     quantity = amount;
-    const updatedItem = { _id, name, image, description, quantity, price, supplierName };
+
+
+
 
     // handle restock form filed 
     const handleRestock = e => {
         e.preventDefault();
         setStockout(false);
         const add = parseInt(e.target.number.value);
+        amount = parseInt(amount);
+
         if (add > 0) {
-            const newAmount = amount + add;
-            setAmount(newAmount);
+            const newAmount = parseInt(amount) + add;
+            console.log(newAmount)
+            handleUpdateItem(newAmount)
+            toast('Item Restocked')
             e.target.number.value = '';
         }
         if (add < 0) {
@@ -57,8 +64,10 @@ const Inventory = () => {
     // handle Delivered button
     const handleDelivered = remove => {
         const newAmount = amount - remove;
+
         if (newAmount > 0) {
-            setAmount(newAmount);
+            handleUpdateItem(newAmount);
+            toast('Item Delivered')
         }
         else if (newAmount === 0) {
             setStockout(true);
@@ -69,8 +78,12 @@ const Inventory = () => {
 
 
     //  updated data send to  mongoDB
-    const handleUpdateItem = () => {
+    const handleUpdateItem = (quantity) => {
+
         if (quantity !== 0) {
+            quantity = `${quantity}`
+            let updatedItem = { _id, name, image, description, quantity, price, supplierName };
+
             fetch(`https://fast-sands-43043.herokuapp.com/inventory/${_id}`, {
                 method: 'PUT',
                 headers: {
@@ -81,23 +94,9 @@ const Inventory = () => {
                 .then(res => res.json())
                 .then(data => {
                     if (data) {
-                        toast('Item updated')
+                        setAmount(quantity);
                     }
                 })
-        }
-        else {
-            const proceed = window.confirm('Are you sure?')
-            if (proceed) {
-                const url = `https://fast-sands-43043.herokuapp.com/item/${_id}`;
-                fetch(url, {
-                    method: 'DELETE'
-                })
-                    .then(res => res.json())
-                    .then(data => {
-                        toast('Item stocked out')
-                        navigate('/home')
-                    })
-            }
         }
     }
     return (
@@ -120,7 +119,7 @@ const Inventory = () => {
                             </Card.Body>
                             <ListGroup className="list-group-flush">
                                 <ListGroupItem>Price : ${price}</ListGroupItem>
-                                <ListGroupItem>Quantity : {amount ? amount : quantity}</ListGroupItem>
+                                <ListGroupItem>Quantity : {quantity}</ListGroupItem>
                                 <ListGroupItem>Supplier Name : {supplierName}</ListGroupItem>
                             </ListGroup>
                             <Card.Body>
@@ -139,9 +138,9 @@ const Inventory = () => {
                                 {stockout ?
                                     <button disabled className='btn btn-dark d-block w-100 mb-5'>StockOut</button>
                                     :
-                                    <button style={{ display: del === 'disable' && "none" }} onClick={() => handleDelivered(1)} className='btn btn-danger d-block w-100 mb-5'>Delivered</button>
+                                    <button onClick={() => handleDelivered(1)} className='btn btn-danger d-block w-100 mb-5'>Delivered</button>
                                 }
-                                <button onClick={handleUpdateItem} className='btn btn-outline-success'>Update</button>
+
                             </Card.Body>
                         </Card>
                         :
