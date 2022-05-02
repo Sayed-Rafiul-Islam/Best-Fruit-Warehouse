@@ -32,7 +32,12 @@ const Inventory = () => {
         amount = quantity;
     }
 
+    // stockout button show
     const [stockout, setStockout] = useState(false);
+
+    // update item 
+    quantity = amount;
+    const updatedItem = { _id, name, image, description, quantity, price, supplierName };
 
     // handle restock form filed 
     const handleRestock = e => {
@@ -59,15 +64,9 @@ const Inventory = () => {
             setStockout(true);
             setAmount(0)
         }
-        else {
-            alert('This is the last piece ! If you want to Stock it out, please remove the item from manage inventory')
-            setDel(true);
-        }
     }
 
-    // update item 
-    quantity = amount;
-    const updatedItem = { _id, name, image, description, quantity, price, supplierName };
+
 
     //  updated data send to  mongoDB
     const handleUpdateItem = () => {
