@@ -15,6 +15,27 @@ const MyItems = () => {
     const [user] = useAuthState(auth);
 
 
+    // pagination and item count for specific user
+    const [page, setPage] = useState(0);
+    const [count, setCount] = useState(0);
+
+    useEffect(() => {
+        const getItem = async () => {
+            const email = user?.email;
+            if (email) {
+                const { data } = await axios.get(`https://fast-sands-43043.herokuapp.com/myItemsCount?email=${email}`, {
+                    headers: {
+                        authorization: `Bearer ${localStorage.getItem('accessToken')}`
+                    }
+                });
+                const count = Math.ceil(data.count / 10);
+                setCount(count);
+            }
+        }
+        getItem();
+
+    }, [user, page])
+
     // if no data to show, ever spinning spinner handling section
     const [loading, setLoading] = useState(false);
     const neverLoad = () => {
@@ -27,27 +48,46 @@ const MyItems = () => {
     setTimeout(neverLoad, 15000);
 
 
-    // specific user items count
+
+    // specific user items load 
     useEffect(() => {
         const getItem = async () => {
             const email = user?.email;
             if (email) {
-                const { data } = await axios.get(`https://fast-sands-43043.herokuapp.com/myItemsCount?email=${email}`, {
-                    headers: {
-                        authorization: `Bearer ${localStorage.getItem('accessToken')}`
+                try {
+                    const { data } = await axios.get(`https://fast-sands-43043.herokuapp.com/myItems?email=${email}&page=${page}`, {
+                        headers: {
+                            authorization: `Bearer ${localStorage.getItem('accessToken')}`
+                        }
+                    });
+                    console.log(page + 1)
+                    console.log(data)
+                    setMyItems(data)
+                }
+                catch (error) {
+                    if (error.response.status === 403 || error.response.status === 401) {
+                        signOut(auth);
+                        navigate('/login');
+                        const { data } = await axios.get(`https://fast-sands-43043.herokuapp.com/myItems?email=${email}`, {
+                            headers: {
+                                authorization: `Bearer ${localStorage.getItem('accessToken')}`
+                            }
+                        })
+                        console.log(data)
                     }
-                });
-                console.log(data)
+                }
+
             }
         }
         getItem();
-    }, [user])
+
+    }, [user, page])
 
 
     // handle specific item delete using specific id 
     const handleMyItemDelete = _id => {
         const proceed = window.confirm('Are you sure?')
-        if (true) {
+        if (proceed) {
             const url = `https://fast-sands-43043.herokuapp.com/item/${_id}`;
             fetch(url, {
                 method: 'DELETE'
@@ -98,13 +138,15 @@ const MyItems = () => {
                                     </Spinner>
                             }
                         </div>
-
-
-
                 }
-
-
             </div>
+            {
+                [...Array(count).keys()]
+                    .map(number => <button
+                        onClick={() => setPage(number)}
+                        className={number === page ? 'btn btn-outline-success bg-success text-light me-2' : 'btn btn-outline-success me-2'}
+                    >{number + 1}</button>)
+            }
         </div>
     );
 };
