@@ -116,7 +116,7 @@ const ManageInventory = () => {
                         >{number + 1}</button>)
                 }
             </div>
-            <button onClick={navToAddInventoryItem} className='btn btn-success d-block w-50 mx-auto my-5'>Add New Item</button>
+            <button onClick={navToAddInventoryItem} className='btn btn-success d-block w-50 mx-auto my-5'>ADD NEW ITEM</button>
         </div>
     );
 };

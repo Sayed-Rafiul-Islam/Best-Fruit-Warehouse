@@ -148,7 +148,7 @@ const Inventory = () => {
                         </Spinner>
                 }
             </div>
-            <button className="btn btn-success d-block mx-auto mt-3 w-50"><Link className="text-white text-decoration-none" to={'/manageInventory'}>Manage Inventory</Link></button>
+            <button className="btn btn-success d-block mx-auto mt-3 w-50"><Link className="text-white text-decoration-none" to={'/manageInventory'}>MANAGE INVENTORIES</Link></button>
         </div >
     );
 };

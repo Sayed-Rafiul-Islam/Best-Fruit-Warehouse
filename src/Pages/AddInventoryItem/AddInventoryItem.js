@@ -77,7 +77,7 @@ const AddInventoryItem = () => {
                     <Form.Control name='supplierName' type="text" placeholder="Supplier Name" required />
                 </Form.Group>
                 <Button className='w-100 mb-2' variant="success" type="submit">
-                    Add Item
+                    ADD ITEM
                 </Button>
             </Form>
         </div>

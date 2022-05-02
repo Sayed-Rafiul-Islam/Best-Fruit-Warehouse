@@ -82,7 +82,7 @@ const Login = () => {
             <p className='text-center'>Forgot Password? <button onClick={async () => {
 
                 await sendPasswordResetEmail(email);
-                toast('Sent email');
+                toast('Reset Password Link Sent via Email');
             }} className='btn btn-link pb-2  text-success'>Reset Password</button></p>
 
         </div>
