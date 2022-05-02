@@ -27,38 +27,28 @@ const MyItems = () => {
     setTimeout(neverLoad, 15000);
 
 
-    // user's added table show filtered using email and restrict unauthorized access using access token
+    // specific user items count
     useEffect(() => {
         const getItem = async () => {
             const email = user?.email;
             if (email) {
-
-                try {
-                    const { data } = await axios.get(`https://fast-sands-43043.herokuapp.com/myItems?email=${email}`, {
-                        headers: {
-                            authorization: `Bearer ${localStorage.getItem('accessToken')}`
-                        }
-                    });
-                    console.log(data)
-                    setMyItems(data)
-                }
-                catch (error) {
-                    console.log(error)
-                    if (error.response.status === 403 || error.response.status === 401) {
-                        signOut(auth);
-                        navigate('/login');
+                const { data } = await axios.get(`http://localhost:5000/myItemsCount?email=${email}`, {
+                    headers: {
+                        authorization: `Bearer ${localStorage.getItem('accessToken')}`
                     }
-                }
+                });
+                console.log(data)
             }
         }
         getItem();
     }, [user])
 
+
     // handle specific item delete using specific id 
     const handleMyItemDelete = _id => {
         const proceed = window.confirm('Are you sure?')
         if (true) {
-            const url = `https://fast-sands-43043.herokuapp.com/item/${_id}`;
+            const url = `http://localhost:5000/item/${_id}`;
             fetch(url, {
                 method: 'DELETE'
             })

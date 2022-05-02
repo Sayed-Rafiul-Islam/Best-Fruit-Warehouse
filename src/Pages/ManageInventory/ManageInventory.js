@@ -24,7 +24,7 @@ const ManageInventory = () => {
     const [pageCount, setPageCount] = useState(0);
     useEffect(() => {
         const getPageCount = async () => {
-            const { data } = await axios.get('https://fast-sands-43043.herokuapp.com/itemCount');
+            const { data } = await axios.get('http://localhost:5000/itemCount');
             const count = data.count;
             const pages = Math.ceil(count / 10);
             setPageCount(pages)
@@ -41,7 +41,7 @@ const ManageInventory = () => {
     const [items, setItems] = useState([]);
     useEffect(() => {
         const getItems = async () => {
-            const data = await axios.get(`https://fast-sands-43043.herokuapp.com/item?page=${page}`);
+            const data = await axios.get(`http://localhost:5000/item?page=${page}`);
             setItems(data.data);
         }
         getItems();
@@ -51,7 +51,7 @@ const ManageInventory = () => {
     const handleItemDelete = _id => {
         const proceed = window.confirm('Are you sure?')
         if (proceed) {
-            const url = `https://fast-sands-43043.herokuapp.com/item/${_id}`;
+            const url = `http://localhost:5000/item/${_id}`;
             fetch(url, {
                 method: 'DELETE'
             })

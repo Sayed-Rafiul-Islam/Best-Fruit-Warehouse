@@ -17,7 +17,7 @@ const Home = () => {
     // load data
     useEffect(() => {
         const getItems = async () => {
-            const data = await axios.get('https://fast-sands-43043.herokuapp.com/item');
+            const data = await axios.get('http://localhost:5000/item');
             setItems(data.data);
         }
         getItems();
@@ -59,7 +59,7 @@ const Home = () => {
             </div>
             {/* Best Fruits Warehouse Founders section */}
             <div className="container my-4">
-                <h1 className="text-center my-4">BEST FRUITS WAREHOUSE<span className="text-success"> FOUNDERS</span></h1>
+                <h1 className="text-center my-4">BEST FRUIT WAREHOUSE<span className="text-success"> FOUNDERS</span></h1>
                 <div>
                     <Founders></Founders>
                 </div>
@@ -67,8 +67,8 @@ const Home = () => {
 
             {/* Footer  */}
             <div className="bg-dark w-100 mt-4 py-4 text-center text-light">
-                <h3><span className="text-success">Best Fruits</span> Warehouse</h3>
-                <small>Copyright © 2022 Physics with Fun</small> <br />
+                <h3><span className="text-success">Best Fruit</span> Warehouse</h3>
+                <small>Copyright © 2022 Best Fruit Warehouse</small> <br />
                 <small>All rights reserved</small>
             </div>
         </div>
