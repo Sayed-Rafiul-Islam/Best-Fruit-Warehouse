@@ -26,3 +26,9 @@
     transition: .4s;
     left: 20px;
 }
+
+@media (max-width: 576px) {
+    .card-img {
+        height: 370px;
+    }
+}
