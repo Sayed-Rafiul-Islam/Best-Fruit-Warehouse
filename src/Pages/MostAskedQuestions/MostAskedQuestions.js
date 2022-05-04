@@ -4,7 +4,7 @@ import './MostAskedQuestions.css'
 
 const MostAskedQuestions = () => {
     return (
-        <div className='width pe-2 mt-lg-0 mt-5'>
+        <div className='width pe-2 mt-lg-0 mt-5' >
             <Accordion defaultActiveKey="0" flush>
                 <Accordion.Item eventKey="0">
                     <Accordion.Header><span className='text-success'>How is the quality of our fruits?</span></Accordion.Header>

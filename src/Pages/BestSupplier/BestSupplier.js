@@ -1,16 +1,20 @@
 import React from 'react';
 import { Card } from 'react-bootstrap';
 import './BestSupplier.css'
+import AOS from "aos";
+import "aos/dist/aos.css";
+
 
 const BestSupplier = () => {
     return (
-        <div className='row'>
+        <div className='row' style={{ overflow: 'hidden' }} id='best-supplier'>
             <h1 className='text-center'>OUR BEST <span className='text-success'>SUPPLIERS</span></h1>
-            <div className='col-12 col-lg-4 my-2'>
+            <div className='col-12 col-lg-4 my-2' data-aos="fade-right" data-aos-anchor="#best-supplier"
+                data-aos-anchor-placement="bottom-top" data-aos-duration="1800">
                 <Card className="position-relative overflow-hidden box">
                     <Card.Img className='sup-image' src='https://i.ibb.co/LC7zQQ0/avatar-2.jpg' alt="Card image" />
                     <Card.ImgOverlay className='overlay'>
-                        <div></div>
+
                     </Card.ImgOverlay>
                     <Card.ImgOverlay>
                         <div className='extra-information w-100'>
@@ -22,7 +26,8 @@ const BestSupplier = () => {
                 </Card>
 
             </div >
-            <div className='col-12 col-lg-4 my-2'>
+            <div className='col-12 col-lg-4 my-2' data-aos="fade-up" data-aos-anchor="#best-supplier"
+                data-aos-anchor-placement="bottom-top" data-aos-duration="1800">
                 <Card className="position-relative overflow-hidden box">
 
                     <Card.Img className='sup-image' src='https://i.ibb.co/Z20Fy6N/avatar-1.jpg' alt="Card image" />
@@ -38,7 +43,8 @@ const BestSupplier = () => {
                     </Card.ImgOverlay>
                 </Card>
             </div>
-            <div className='col-12 col-lg-4 my-2'>
+            <div className='col-12 col-lg-4 my-2' data-aos="fade-left" data-aos-anchor="#best-supplier"
+                data-aos-anchor-placement="bottom-top" data-aos-duration="1800">
                 <Card className="position-relative overflow-hidden box">
 
                     <Card.Img className='sup-image' src='https://i.ibb.co/x2zj2jF/avatar-3.jpg' alt="Card image" />
