@@ -28,7 +28,6 @@ const Item = (props) => {
                     </div>
                 </Card.ImgOverlay>
             </Card>
-
         </div>
     );
 };

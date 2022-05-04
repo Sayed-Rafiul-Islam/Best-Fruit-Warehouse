@@ -2,7 +2,7 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { Spinner } from "react-bootstrap";
 import { Link } from "react-router-dom";
-import Founders from "../Founders/Founders";
+import BestSupplier from "../BestSupplier/BestSupplier";
 import Item from "../Item/Item";
 import MostAskedQuestions from "../MostAskedQuestions/MostAskedQuestions";
 import './Home.css'
@@ -27,7 +27,7 @@ const Home = () => {
         <div className="d-flex flex-column">
             {/* banner */}
             <div className="mb-5">
-                <img className="img-fluid" src="https://i.ibb.co/VjbF2Y6/banner.jpg" alt="" />
+                <img className="img-fluid" src="https://i.ibb.co/7KwWTN5/banner.jpg" alt="" />
             </div>
 
             {/* Inventory Items section */}
@@ -59,9 +59,9 @@ const Home = () => {
             </div>
             {/* Best Fruits Warehouse Founders section */}
             <div className="container my-4">
-                <h1 className="text-center my-4">BEST FRUIT WAREHOUSE<span className="text-success"> FOUNDERS</span></h1>
+                <BestSupplier></BestSupplier>
                 <div>
-                    <Founders></Founders>
+
                 </div>
             </div>
 
