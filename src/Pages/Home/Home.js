@@ -51,16 +51,14 @@ const Home = () => {
 
             {/* Most Asked Questions Section  */}
 
-            <div className="my-4 container" style={{ overflow: 'hidden' }} id='ques' >
+            <div className="my-4 container">
                 <h1 className="text-center my-4">MOST ASKED<span className="text-success"> QUESTIONS</span></h1>
-                <div className="d-flex flex-lg-row flex-column-reverse flex-wrap align-items-center" data-aos="flip-up" data-aos-anchor="#ques"
-                    data-aos-anchor-placement="bottom-top" data-aos-duration="1500">
+                <div className="d-flex flex-lg-row flex-column-reverse flex-wrap align-items-center">
                     <MostAskedQuestions></MostAskedQuestions>
 
                     <div className="width ps-2">
                         <img className="img-fluid" src="https://i.ibb.co/9cT0GLt/pic.jpg" alt="" />
                     </div>
-
                 </div>
             </div>
 
