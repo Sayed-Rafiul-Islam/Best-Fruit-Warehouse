@@ -12,17 +12,17 @@
     left: -400px;
 }
 
-.card:hover .item-img {
+.item-box:hover .item-img {
     transform: scale(1.2);
     transition: .4s;
 }
 
-.card:hover .dark-overlay {
+.item-box:hover .dark-overlay {
     transition: .4s;
     background-color: rgba(5, 70, 5, 0.405);
 }
 
-.card:hover .extra-info {
+.item-box:hover .extra-info {
     transition: .4s;
     left: 20px;
 }

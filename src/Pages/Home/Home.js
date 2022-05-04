@@ -57,7 +57,7 @@ const Home = () => {
                     </div>
                 </div>
             </div>
-            {/* Best Fruits Warehouse Founders section */}
+            {/* Best Suppliers section */}
             <div className="container my-4">
                 <BestSupplier></BestSupplier>
                 <div>
