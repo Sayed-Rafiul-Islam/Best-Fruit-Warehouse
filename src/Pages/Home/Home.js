@@ -5,7 +5,9 @@ import { Link } from "react-router-dom";
 import BestSupplier from "../BestSupplier/BestSupplier";
 import Item from "../Item/Item";
 import MostAskedQuestions from "../MostAskedQuestions/MostAskedQuestions";
-import './Home.css'
+import './Home.css';
+import AOS from "aos";
+import "aos/dist/aos.css";
 
 
 const Home = () => {
@@ -45,23 +47,25 @@ const Home = () => {
                     }
                 </div>
                 <button className="btn btn-success d-block mx-auto mt-3 w-50"><Link className="text-white text-decoration-none" to={'/manageInventory'}>MANAGE INVENTORIES</Link></button>
-            </div>
 
-            {/* Most Asked Questions Section  */}
-            <div className="my-4 container">
-                <h1 className="text-center my-4">MOST ASKED<span className="text-success"> QUESTIONS</span></h1>
-                <div className="d-flex flex-lg-row flex-column-reverse flex-wrap align-items-center container">
-                    <MostAskedQuestions></MostAskedQuestions>
-                    <div className="width ps-2">
-                        <img className="img-fluid" src="https://i.ibb.co/9cT0GLt/pic.jpg" alt="" />
+
+                {/* Most Asked Questions Section  */}
+                <div data-aos="fade-left" data-aos-offset="1350" data-aos-duration="1000">
+                    <div className="my-4 container">
+                        <h1 className="text-center my-4">MOST ASKED<span className="text-success"> QUESTIONS</span></h1>
+                        <div className="d-flex flex-lg-row flex-column-reverse flex-wrap align-items-center container">
+                            <MostAskedQuestions></MostAskedQuestions>
+                            <div className="width ps-2">
+                                <img className="img-fluid" src="https://i.ibb.co/9cT0GLt/pic.jpg" alt="" />
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
             {/* Best Suppliers section */}
-            <div className="container my-4">
-                <BestSupplier></BestSupplier>
-                <div>
-
+            <div data-aos="fade-right" data-aos-offset="1400" data-aos-duration="1000">
+                <div className="container my-4">
+                    <BestSupplier></BestSupplier>
                 </div>
             </div>
 
