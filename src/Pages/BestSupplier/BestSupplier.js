@@ -7,9 +7,9 @@ const BestSupplier = () => {
         <div className='row'>
             <h1 className='text-center'>OUR BEST <span className='text-success'>SUPPLIERS</span></h1>
             <div className='col-12 col-lg-4 my-2'>
-                <Card className="position-relative overflow-hidden">
+                <Card className="position-relative overflow-hidden card cold">
 
-                    <Card.Img className='sup-img' src='https://i.ibb.co/LC7zQQ0/avatar-2.jpg' alt="Card image" />
+                    <Card.Img className='sup-image' src='https://i.ibb.co/LC7zQQ0/avatar-2.jpg' alt="Card image" />
                     <Card.ImgOverlay className='overlay'>
                         <div></div>
                     </Card.ImgOverlay>
@@ -23,9 +23,9 @@ const BestSupplier = () => {
                 </Card>
             </div>
             <div className='col-12 col-lg-4 my-2'>
-                <Card className="position-relative overflow-hidden">
+                <Card className="card position-relative overflow-hidden">
 
-                    <Card.Img className='sup-img' src='https://i.ibb.co/Z20Fy6N/avatar-1.jpg' alt="Card image" />
+                    <Card.Img className='sup-image' src='https://i.ibb.co/Z20Fy6N/avatar-1.jpg' alt="Card image" />
                     <Card.ImgOverlay className='overlay'>
                         <div></div>
                     </Card.ImgOverlay>
@@ -39,9 +39,9 @@ const BestSupplier = () => {
                 </Card>
             </div>
             <div className='col-12 col-lg-4 my-2'>
-                <Card className="position-relative overflow-hidden">
+                <Card className="card position-relative overflow-hidden">
 
-                    <Card.Img className='sup-img' src='https://i.ibb.co/x2zj2jF/avatar-3.jpg' alt="Card image" />
+                    <Card.Img className='sup-image' src='https://i.ibb.co/x2zj2jF/avatar-3.jpg' alt="Card image" />
                     <Card.ImgOverlay className='overlay'>
                         <div></div>
                     </Card.ImgOverlay>

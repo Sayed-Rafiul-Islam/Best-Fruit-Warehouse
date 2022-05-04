@@ -9,11 +9,6 @@
     left: -400px;
 }
 
-.card:hover .sup-img {
-    scale: 1.2;
-    transition: 10s;
-}
-
 .card:hover .overlay {
     position: absolute;
     top: 0px;
@@ -26,6 +21,23 @@
     transition-delay: .5s;
     left: 20px;
 
+}
+
+.sup-image {
+    width: 100%;
+}
+
+.card {
+    box-shadow: 7px 15px 20px rgb(58, 62, 60);
+}
+
+.sup-image:hover .card {
+    box-shadow: 7px 15px rgb(238, 21, 54);
+}
+
+.card:hover .sup-image {
+    transform: scale(1.2);
+    transition: 1.3s;
 }
 
 .name-bg {
@@ -47,16 +59,21 @@
 @media (max-width: 576px) {
     .name {
         left: 15px;
-        top: 2px;
+        top: 172px;
     }
 
     .location {
-        top: 10px;
+        top: 178px;
         left: 3px;
     }
 
     .name-bg {
         width: 270px;
         position: absolute;
+        top: 170px;
+    }
+
+    .sup-image {
+        height: 250px;
     }
 }

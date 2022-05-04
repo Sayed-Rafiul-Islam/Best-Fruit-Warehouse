@@ -14,7 +14,7 @@ const Item = (props) => {
     return (
         <div className='col-12 col-lg-4 my-2'>
             <Card className="position-relative card bg-dark text-white overflow-hidden">
-                <Card.Img className='card-img' src={image} alt="Card image" />
+                <Card.Img className='item-img' src={image} alt="Card image" />
                 <Card.ImgOverlay className='dark-overlay'>
                     <Card.Title>{name}</Card.Title>
                     <Card.Text>

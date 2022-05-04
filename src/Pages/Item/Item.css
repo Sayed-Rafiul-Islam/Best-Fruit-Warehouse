@@ -12,7 +12,7 @@
     left: -400px;
 }
 
-.card:hover .card-img {
+.card:hover .item-img {
     transform: scale(1.2);
     transition: .4s;
 }
@@ -28,7 +28,7 @@
 }
 
 @media (max-width: 576px) {
-    .card-img {
+    .item-img {
         height: 370px;
     }
 }
