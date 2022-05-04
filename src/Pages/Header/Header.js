@@ -16,9 +16,11 @@ const Header = () => {
     }
     return (
         <div className='my-lg-3 header fixed-top d-flex align-items-center'>
-            <button onClick={() => setVisible(!visible)} className='fixed-top w-25 header-btn btn btn-link text-decoration-none text-light'>MENU</button>
+            <div className={visible ? 'btn-link-1 header-btn' : 'btn-link-2 header-btn'}>
+                <button onClick={() => setVisible(!visible)} className='btn btn-success' ><img style={{ height: '35px', width: '35px' }} src="https://i.ibb.co/d0TrYhn/menu.png" alt='' /> </button>
+            </div>
             <div className={visible ? 'nav-1' : 'nav-2'}>
-                <nav className='header-bg d-flex flex-lg-row flex-column align-items-center container justify-content-evenly'>
+                <nav className=' d-flex flex-lg-row flex-column align-items-center container justify-content-evenly'>
                     <div className='d-flex flex-lg-row flex-column'>
                         <CustomLink className='link' to='/home'><span className='link'>HOME</span></CustomLink>
                         <CustomLink className='link' to='/blogs'><span className='link'>BLOGS</span></CustomLink>
