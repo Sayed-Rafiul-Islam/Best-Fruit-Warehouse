@@ -47,14 +47,14 @@
     .btn-link-1 {
         position: absolute;
         left: 245px;
-        top: 40px;
+        top: 38px;
         transition: 0.5s;
     }
 
     .btn-link-2 {
         position: absolute;
         left: -10px;
-        top: 40px;
+        top: 38px;
         transition: 0.5s;
     }
 
