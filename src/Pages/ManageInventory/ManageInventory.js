@@ -1,9 +1,11 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
-import { Spinner, Table } from 'react-bootstrap';
+import { Button, Spinner, Table } from 'react-bootstrap';
 import { useNavigate } from 'react-router';
 import TableItem from './TableItem/TableItem';
 import './ManageInventory.css'
+import { Modal } from 'bootstrap';
+import { toast } from 'react-toastify';
 
 const ManageInventory = () => {
 
@@ -47,21 +49,22 @@ const ManageInventory = () => {
         getItems();
     }, [page])
 
+
+
     // delete item handling section
     const handleItemDelete = _id => {
-        const proceed = window.confirm('Are you sure?')
-        if (proceed) {
-            const url = `https://fast-sands-43043.herokuapp.com/item/${_id}`;
-            fetch(url, {
-                method: 'DELETE'
+        const url = `https://fast-sands-43043.herokuapp.com/item/${_id}`;
+        fetch(url, {
+            method: 'DELETE'
+        })
+            .then(res => res.json())
+            .then(data => {
+                const newItems = items.filter(item => item?._id !== _id);
+                setItems(newItems);
+                toast.error('Item Deleted')
             })
-                .then(res => res.json())
-                .then(data => {
-                    const newItems = items.filter(item => item?._id !== _id);
-                    setItems(newItems);
-                })
-        }
     }
+
 
 
     return (
@@ -117,6 +120,7 @@ const ManageInventory = () => {
                 }
             </div>
             <button onClick={navToAddInventoryItem} className='btn btn-success d-block w-50 mx-auto my-5'>ADD NEW ITEM</button>
+
         </div>
     );
 };

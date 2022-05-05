@@ -49,7 +49,7 @@ const AddInventoryItem = () => {
                 const { data } = response;
                 console.log(data.insertedId)
                 if (data.insertedId) {
-                    toast('Item Added')
+                    toast.success('Item Added')
                 }
             })
 

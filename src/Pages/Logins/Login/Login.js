@@ -47,7 +47,7 @@ const Login = () => {
         errorMessage = <p className='text-danger text-center'>{error?.message}</p>;
     }
     if (user) {
-        toast('Successfully Logged In');
+        toast.success('Successfully Logged In');
         navigate(from, { replace: true });
     }
     return (
@@ -78,12 +78,11 @@ const Login = () => {
                 </Form>
 
             </div>
-            <p className='text-center mt-3'>Don't have an account? <Link to='/register'><span className='text-success'>Go to Register</span></Link></p>
+            <p className='text-center mt-3'>Don't have an account? <Link className='text-decoration-none' to='/register'><span className='text-success'>Go to Register</span></Link></p>
             <p className='text-center'>Forgot Password? <button onClick={async () => {
-
                 await sendPasswordResetEmail(email);
-                toast('Reset Password Link Sent via Email');
-            }} className='btn btn-link pb-2  text-success'>Reset Password</button></p>
+                toast.info('Reset Password Link Sent via Email');
+            }} className='btn btn-link pb-2 text-decoration-none  text-success'>Reset Password</button></p>
 
         </div>
     );

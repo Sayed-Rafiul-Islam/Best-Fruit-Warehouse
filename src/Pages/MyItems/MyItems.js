@@ -4,6 +4,7 @@ import React, { useEffect, useState } from 'react';
 import { Spinner, Table } from 'react-bootstrap';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { useNavigate } from 'react-router';
+import { toast } from 'react-toastify';
 import auth from '../../firebase.init';
 import MyItemTable from '../MyItemTable/MyItemTable';
 
@@ -86,18 +87,18 @@ const MyItems = () => {
 
     // handle specific item delete using specific id 
     const handleMyItemDelete = _id => {
-        const proceed = window.confirm('Are you sure?')
-        if (proceed) {
-            const url = `https://fast-sands-43043.herokuapp.com/item/${_id}`;
-            fetch(url, {
-                method: 'DELETE'
+
+        const url = `https://fast-sands-43043.herokuapp.com/item/${_id}`;
+        fetch(url, {
+            method: 'DELETE'
+        })
+            .then(res => res.json())
+            .then(data => {
+                const newItems = myItems.filter(myItem => myItem?._id !== _id);
+                setMyItems(newItems);
+                toast.warning('Item Deleted')
             })
-                .then(res => res.json())
-                .then(data => {
-                    const newItems = myItems.filter(myItem => myItem?._id !== _id);
-                    setMyItems(newItems);
-                })
-        }
+
     }
 
     return (

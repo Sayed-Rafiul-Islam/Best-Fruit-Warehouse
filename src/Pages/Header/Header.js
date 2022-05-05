@@ -1,6 +1,7 @@
 import { signOut } from 'firebase/auth';
 import React, { useState } from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
+import { toast } from 'react-toastify';
 import auth from '../../firebase.init';
 import CustomLink from '../CustomLink/CustomLink';
 import './Header.css';
@@ -13,6 +14,7 @@ const Header = () => {
     const [user] = useAuthState(auth);
     const handleLogout = () => {
         signOut(auth);
+        toast.error("Logged Out !")
     }
     return (
         <div className='my-lg-3 header fixed-top d-flex align-items-center'>
@@ -32,7 +34,7 @@ const Header = () => {
                                     <CustomLink className='link' to='/addInventoryItem'><span className='link'>ADD ITEM</span></CustomLink>
                                     <CustomLink className='link' to='/manageInventory'><span className='link'>MANAGE INVENTORIES</span></CustomLink>
                                     <CustomLink className='link' to='/myItems'> <span className='link'>MY ITEMS</span></CustomLink>
-                                    <CustomLink className='link' to='/home'><button onClick={handleLogout} className='btn btn-link text-decoration-none text-dark'><span className='link' style={{ color: 'white' }}>LOG OUT</span></button></CustomLink>
+                                    <CustomLink className='link' to='/home'><button onClick={handleLogout} className='btn btn-link text-decoration-none'><span className='link' >LOG OUT</span></button></CustomLink>
                                 </div>
                                 :
                                 <CustomLink className='link' to='/login'><span className='link'>LOG IN</span></CustomLink>

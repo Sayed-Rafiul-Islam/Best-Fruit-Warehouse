@@ -37,7 +37,7 @@ const Register = () => {
     //  navigation section
     const navigate = useNavigate();
     if (user) {
-        toast('Verification mail has been sent');
+        toast.info('Verification mail has been sent');
         navigate('/home')
     }
 
@@ -65,7 +65,7 @@ const Register = () => {
                                 Register
                             </Button>
                     }
-                    <p>Already have an account? <Link to='/login'><span className='text-success'>Go to Login</span></Link></p>
+                    <p>Already have an account? <Link className='text-decoration-none' to='/login'><span className='text-success'>Go to Login</span></Link></p>
                     {errorMessage}
                 </Form>
 

@@ -15,7 +15,7 @@ const SocialLogin = () => {
     const location = useLocation();
     let from = location.state?.from?.pathname || "/";
     if (user) {
-        toast('Login Successful');
+        toast.success('Login Successful');
         navigate(from, { replace: true });
     }
 

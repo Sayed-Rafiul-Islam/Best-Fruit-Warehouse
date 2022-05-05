@@ -53,7 +53,7 @@ const Inventory = () => {
             const newAmount = parseInt(amount) + add;
             console.log(newAmount)
             handleUpdateItem(newAmount)
-            toast('Item Restocked')
+            toast.info('Item Restocked')
             e.target.number.value = '';
         }
         if (add < 0) {
@@ -67,7 +67,7 @@ const Inventory = () => {
 
         if (newAmount > 0) {
             handleUpdateItem(newAmount);
-            toast('Item Delivered')
+            toast.error('Item Delivered')
         }
         else if (newAmount === 0) {
             setStockout(true);
