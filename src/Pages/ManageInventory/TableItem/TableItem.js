@@ -5,6 +5,8 @@ import './TableItem.css'
 const TableItem = (props) => {
     const { _id, name, price, quantity, supplierName, image } = props.item;
     const { handleItemDelete } = props;
+
+    // modal 
     const [show, setShow] = useState(false);
     const handleShow = _id => {
         setShow(false);
