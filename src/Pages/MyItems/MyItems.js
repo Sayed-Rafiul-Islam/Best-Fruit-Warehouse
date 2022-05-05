@@ -74,7 +74,6 @@ const MyItems = () => {
                                 authorization: `Bearer ${localStorage.getItem('accessToken')}`
                             }
                         })
-                        console.log(data)
                     }
                 }
 
@@ -96,7 +95,7 @@ const MyItems = () => {
             .then(data => {
                 const newItems = myItems.filter(myItem => myItem?._id !== _id);
                 setMyItems(newItems);
-                toast.warning('Item Deleted')
+                toast.error('Item Deleted')
             })
 
     }
