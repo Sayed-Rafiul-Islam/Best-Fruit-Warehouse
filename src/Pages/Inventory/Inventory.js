@@ -1,13 +1,11 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
-import { Button, Card, Form, InputGroup, ListGroup, ListGroupItem, Spinner } from 'react-bootstrap';
-import { useNavigate, useParams } from 'react-router';
+import { Button, Card, Form, InputGroup, ListGroup, ListGroupItem, Modal, Spinner } from 'react-bootstrap';
+import { useParams } from 'react-router';
 import { Link } from 'react-router-dom';
 import { toast } from 'react-toastify';
 
 const Inventory = () => {
-
-    const navigate = useNavigate();
 
     //  loaded data for specific id
     const [item, setItem] = useState({});
@@ -39,7 +37,8 @@ const Inventory = () => {
     // update item 
     quantity = amount;
 
-
+    // modal
+    const [show, setShow] = useState(false);
 
 
     // handle restock form filed 
@@ -53,11 +52,11 @@ const Inventory = () => {
             const newAmount = parseInt(amount) + add;
             console.log(newAmount)
             handleUpdateItem(newAmount)
-            toast.info('Item Restocked')
+            toast.success('Item Restocked')
             e.target.number.value = '';
         }
         if (add < 0) {
-            alert('Restocking amount must be positive !!')
+            setShow(true);
         }
     }
 
@@ -99,6 +98,8 @@ const Inventory = () => {
                 })
         }
     }
+
+
     return (
         <div className='my-5 pt-lg-5 text-center'>
             <h1 className='text-success'>INVENTORY</h1>
@@ -149,6 +150,25 @@ const Inventory = () => {
                 }
             </div>
             <button className="btn btn-success d-block mx-auto mt-3 w-50"><Link className="text-white text-decoration-none" to={'/manageInventory'}>MANAGE INVENTORIES</Link></button>
+            <Modal
+                show={show}
+                size="md"
+                aria-labelledby="contained-modal-title-vcenter"
+                centered
+            >
+                <Modal.Header
+                    onHide={() => setShow(false)}
+                    closeButton>
+                    <Modal.Title id="contained-modal-title-vcenter">
+                    </Modal.Title>
+                </Modal.Header>
+                <Modal.Body>
+                    <h5 className='text-success'>Restocking Value Must be Positive !!</h5>
+                </Modal.Body>
+                <Modal.Footer>
+                    <Button variant='danger' onClick={() => setShow(false)}>Close</Button>
+                </Modal.Footer>
+            </Modal>
         </div >
     );
 };
