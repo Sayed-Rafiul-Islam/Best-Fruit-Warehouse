@@ -9,11 +9,7 @@ import './Home.css';
 import AOS from "aos";
 import "aos/dist/aos.css";
 AOS.init({
-    easing: 'ease-out-back',
-    duration: 800,
-    delay: 300,
-    once: true,
-    disable: 'mobile'
+
 });
 
 
@@ -62,7 +58,7 @@ const Home = () => {
                 <h1 className="text-center my-4">MOST ASKED<span className="text-success"> QUESTIONS</span></h1>
                 <div className="d-flex flex-lg-row flex-column-reverse flex-wrap align-items-center">
                     <MostAskedQuestions></MostAskedQuestions>
-                    <div className="width ps-2" data-aos="f-r" data-aos-duration="500">
+                    <div className="width ps-2" data-aos="fade-up-left" data-aos-duration="1000">
                         <img className="img-fluid" src="https://i.ibb.co/9cT0GLt/pic.jpg" alt="" />
                     </div>
                 </div>

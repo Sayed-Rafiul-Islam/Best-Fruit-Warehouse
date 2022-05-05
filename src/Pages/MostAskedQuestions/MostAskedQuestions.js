@@ -1,11 +1,14 @@
 import React from 'react';
 import { Accordion } from 'react-bootstrap';
 import './MostAskedQuestions.css'
+import AOS from "aos";
+import "aos/dist/aos.css";
+AOS.init();
 
 const MostAskedQuestions = () => {
     return (
         <div className='width pe-2 mt-lg-0 mt-5' style={{ overflow: 'hidden' }} >
-            <div data-aos="f-l" data-aos-duration="500">
+            <div data-aos="fade-up-right" data-aos-duration="1000">
                 <Accordion defaultActiveKey="0" flush>
                     <Accordion.Item eventKey="0">
                         <Accordion.Header><span className='text-success'>How is the quality of our fruits?</span></Accordion.Header>
