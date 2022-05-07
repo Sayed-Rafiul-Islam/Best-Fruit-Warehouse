@@ -1,6 +1,6 @@
 import axios from 'axios';
-import React from 'react';
-import { Form, Button } from 'react-bootstrap';
+import React, { useState } from 'react';
+import { Form, Button, Modal } from 'react-bootstrap';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { toast } from 'react-toastify';
 import auth from '../../firebase.init';
@@ -11,6 +11,9 @@ const AddInventoryItem = () => {
     // email taken for my item's filtering 
     const [user] = useAuthState(auth);
     const email = user?.email;
+
+    // modal 
+    const [show, setShow] = useState(false);
 
     // handle add item 
     const handleAddItem = async e => {
@@ -44,16 +47,21 @@ const AddInventoryItem = () => {
         }
 
         // data send to backend 
-        await axios.post(`https://fast-sands-43043.herokuapp.com/addInventoryItem`, newItem)
-            .then(response => {
-                const { data } = response;
-                console.log(data.insertedId)
-                if (data.insertedId) {
-                    toast.success('Item Added')
-                }
-            })
+        if (price > 0 && quantity > 0) {
+            await axios.post(`https://fast-sands-43043.herokuapp.com/addInventoryItem`, newItem)
+                .then(response => {
+                    const { data } = response;
+                    if (data.insertedId) {
+                        toast.success('Item Added')
+                    }
+                })
+        }
+        else {
+            setShow(true);
+        }
 
     }
+
     return (
         <div className='mt-5 pt-lg-5'>
             <h1 className='text-center mb-4'>ADD <span className='text-success'>ITEMS</span></h1>
@@ -80,6 +88,25 @@ const AddInventoryItem = () => {
                     ADD ITEM
                 </Button>
             </Form>
+            <Modal
+                onHide={() => setShow(false)}
+                show={show}
+                size="md"
+                aria-labelledby="contained-modal-title-vcenter"
+                centered
+            >
+                <Modal.Header closeButton>
+                    <Modal.Title id="contained-modal-title-vcenter" className='text-success'>
+                        Aru You sure ?
+                    </Modal.Title>
+                </Modal.Header>
+                <Modal.Body>
+                    <p className='text-success'>You want to delete this item</p>
+                </Modal.Body>
+                <Modal.Footer>
+                    <Button variant='danger' onClick={() => { setShow(false) }}>Close</Button>
+                </Modal.Footer>
+            </Modal>
         </div>
     );
 };
