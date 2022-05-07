@@ -96,12 +96,9 @@ const AddInventoryItem = () => {
                 centered
             >
                 <Modal.Header closeButton>
-                    <Modal.Title id="contained-modal-title-vcenter" className='text-success'>
-                        Aru You sure ?
-                    </Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
-                    <p className='text-success'>You want to delete this item</p>
+                    <p className='text-success'>Quantity and Price must be positive</p>
                 </Modal.Body>
                 <Modal.Footer>
                     <Button variant='danger' onClick={() => { setShow(false) }}>Close</Button>
