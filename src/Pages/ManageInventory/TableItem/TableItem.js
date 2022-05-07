@@ -31,7 +31,7 @@ const TableItem = (props) => {
             >
                 <Modal.Header closeButton>
                     <Modal.Title id="contained-modal-title-vcenter" className='text-success'>
-                        Aru You sure ?
+                        Are You sure ?
                     </Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
