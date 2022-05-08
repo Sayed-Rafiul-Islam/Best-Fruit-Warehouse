@@ -66,18 +66,18 @@
         width: 285px;
         background-color: #198754;
         position: absolute;
-        top: 0px;
+        top: -2px;
         left: -10px;
         transition: 0.5s;
-        height: 895px;
+        height: 900px;
     }
 
     .nav-2 {
         position: absolute;
-        top: 0px;
+        top: -2px;
         left: -300px;
         transition: 0.5s;
-        height: 895px;
+        height: 900px;
     }
 
     .header-bg {

@@ -22,7 +22,7 @@ const Header = () => {
                 <button onClick={() => setVisible(!visible)} className='btn btn-success' ><img style={{ height: '35px', width: '35px' }} src="https://i.ibb.co/d0TrYhn/menu.png" alt='' /> </button>
             </div>
             <div className={visible ? 'nav-1' : 'nav-2'}>
-                <nav className=' d-flex flex-lg-row flex-column align-items-center container justify-content-evenly'>
+                <nav className=' d-flex flex-lg-row flex-column align-items-center container justify-content-evenly pt-lg-0 pt-3'>
                     <div className='d-flex flex-lg-row flex-column'>
                         <CustomLink className='link' to='/home'><span className='link'>HOME</span></CustomLink>
                         <CustomLink className='link' to='/blogs'><span className='link'>BLOGS</span></CustomLink>
