@@ -19,13 +19,13 @@ const MostAskedQuestions = () => {
                     <Accordion.Item eventKey="1">
                         <Accordion.Header><span className='text-success'>Where do we import our fruits from?</span></Accordion.Header>
                         <Accordion.Body>
-                            <i className="text-success">We import our fruits from all over the world. As the weather is not same at every corner of Earth at the same time, we are able to stock almost all kinds of fruits in all seasons, so if our employer asks us to deliver Mangos while the is's summer, we are able to provide</i>
+                            <i className="text-success">We import our fruits from all over the world. As the weather is not same at every corner of Earth at the same time, we are able to stock almost all kinds of fruits in all seasons, so if our employer asks us to deliver Mangos while the season is not summer there, we are able to provide</i>
                         </Accordion.Body>
                     </Accordion.Item>
                     <Accordion.Item eventKey="2">
                         <Accordion.Header><span className='text-success'>How do we function?</span></Accordion.Header>
                         <Accordion.Body>
-                            <i className='text-success'>Well we have central team, they act as the hub. The are the ones who connect our suppliers from all over the globe. And the suppliers are freelancers basically but we do research our freelancers before we hire them for safety and efficiency purposes</i>
+                            <i className='text-success'>Well we have a central team, they act as the hub. The are the ones who connect our suppliers from all over the globe. And the suppliers are freelancers basically but we do research our freelancers before we hire them for safety and efficiency purposes</i>
                         </Accordion.Body>
                     </Accordion.Item>
                 </Accordion>
