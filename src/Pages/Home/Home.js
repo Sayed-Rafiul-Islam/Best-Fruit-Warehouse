@@ -36,7 +36,7 @@ const Home = () => {
             </div>
 
             {/* Inventory Items section */}
-            <h1 className="text-center ">INVENTORY <span className="text-success">ITEMS</span></h1>
+            <h1 className="text-center ">INVENTORY <span className="text-success">ITEMS NOW</span></h1>
 
             <Spinner style={{ display: `${items[0]?._id ? 'none' : 'block'}` }} className="spinner-border text-success mx-auto" role="status">
             </Spinner>
