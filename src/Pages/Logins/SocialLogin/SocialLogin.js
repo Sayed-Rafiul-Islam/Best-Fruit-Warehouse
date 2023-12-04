@@ -7,10 +7,6 @@ import auth from '../../../firebase.init';
 import axios from 'axios';
 
 const SocialLogin = () => {
-
-    const [email,setEmail] = useState()
-    
-
     // handle google sign in 
     const [signInWithGoogle, user, loading, error] = useSignInWithGoogle(auth);
 

@@ -9,7 +9,6 @@ import Register from './Pages/Logins/Register/Register';
 import RequireAuth from './Pages/Logins/RequireAuth/RequireAuth';
 import ManageInventory from './Pages/ManageInventory/ManageInventory';
 import NotFound from './Pages/NotFound/NotFound';
-import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import MyItems from './Pages/MyItems/MyItems';
 import Header from './Pages/Header/Header';
@@ -34,7 +33,7 @@ function App() {
         <Route path="/blogs" element={<Blogs></Blogs>}></Route>
         <Route path="*" element={<NotFound></NotFound>}></Route>
       </Routes>
-      <ToastContainer theme="colored" />
+      
 
 
     </div>

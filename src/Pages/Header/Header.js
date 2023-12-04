@@ -1,7 +1,7 @@
 import { signOut } from 'firebase/auth';
 import React, { useState } from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
-import { toast } from 'react-toastify';
+import { ToastContainer, toast } from 'react-toastify';
 import auth from '../../firebase.init';
 import CustomLink from '../CustomLink/CustomLink';
 import './Header.css';
@@ -42,6 +42,7 @@ const Header = () => {
                     </div>
                 </nav >
             </div>
+            <ToastContainer theme="colored" />
         </div >
     );
 };

@@ -1,7 +1,7 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Button, Form, Spinner } from 'react-bootstrap';
 import { useSendPasswordResetEmail, useSignInWithEmailAndPassword } from 'react-firebase-hooks/auth';
-import { toast } from 'react-toastify';
+import {  toast } from 'react-toastify';
 import auth from '../../../firebase.init';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import SocialLogin from '../SocialLogin/SocialLogin';
@@ -19,12 +19,7 @@ const Login = () => {
     const [sendPasswordResetEmail, sending, error1] = useSendPasswordResetEmail(auth);
 
     //  sign in with mail handle
-    const [
-        signInWithEmailAndPassword,
-        user,
-        loading,
-        error,
-    ] = useSignInWithEmailAndPassword(auth);
+    const [signInWithEmailAndPassword,user,loading,error,] = useSignInWithEmailAndPassword(auth);
 
     const handleLogin = async e => {
         e.preventDefault();
@@ -36,19 +31,23 @@ const Login = () => {
         await signInWithEmailAndPassword(email, password);
 
         // email sent to database and access token stored in local storage
-        const { data } = await axios.post('https://bestfruits.cyclic.app/login', { email });
+        const { data } = await axios.post('http://localhost:5000/login', { email });
         localStorage.setItem('accessToken', data.accessToken);
+        
     }
 
     // error message and toast if user logs in
     let errorMessage;
     if (error) {
         errorMessage = <p className='text-danger text-center'>{error?.message}</p>;
+
     }
+
     if (user) {
-        toast.success('Successfully Logged In');
         navigate(from, { replace: true });
+        toast.success('Successfully Logged In');
     }
+
     return (
         <div className='container mt-5 pt-5'>
             <h1 className='text-center mb-4'>Please <span className='text-success'>Login</span></h1>

@@ -8,6 +8,7 @@ import MostAskedQuestions from "../MostAskedQuestions/MostAskedQuestions";
 import './Home.css';
 import AOS from "aos";
 import "aos/dist/aos.css";
+import { ToastContainer } from "react-toastify";
 AOS.init({
 
 });
@@ -79,6 +80,7 @@ const Home = () => {
                 <small>Copyright © 2022 Best Fruit Warehouse</small> <br />
                 <small>All rights reserved</small>
             </div>
+
         </div>
     );
 };
