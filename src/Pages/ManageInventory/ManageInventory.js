@@ -53,7 +53,7 @@ const ManageInventory = () => {
 
     // delete item handling section
     const handleItemDelete = _id => {
-        const url = `https://bestfruits.cyclic.app/https://bestfruits.cyclic.app/item/${_id}`;
+        const url = `https://bestfruits.cyclic.app/item/${_id}`;
         fetch(url, {
             method: 'DELETE'
         })
