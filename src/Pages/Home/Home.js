@@ -22,7 +22,7 @@ const Home = () => {
     // load data
     useEffect(() => {
         const getItems = async () => {
-            const data = await axios.get('http://localhost:5000/item');
+            const data = await axios.get('https://bestfruits.cyclic.app/item');
             setItems(data.data);
         }
         getItems();

@@ -17,7 +17,7 @@ const Inventory = () => {
     const { id } = useParams();
     useEffect(() => {
         const getItem = async () => {
-            const data = await axios.get(`http://localhost:5000/inventory/${id}`);
+            const data = await axios.get(`https://bestfruits.cyclic.app/inventory/${id}`);
             setItem(data.data);
         }
         getItem();
@@ -83,7 +83,7 @@ const Inventory = () => {
             quantity = `${quantity}`
             let updatedItem = { _id, name, image, description, quantity, price, supplierName };
 
-            fetch(`http://localhost:5000/inventory/${_id}`, {
+            fetch(`https://bestfruits.cyclic.app/inventory/${_id}`, {
                 method: 'PUT',
                 headers: {
                     'content-type': 'application/json'

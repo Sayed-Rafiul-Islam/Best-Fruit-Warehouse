@@ -48,7 +48,7 @@ const AddInventoryItem = () => {
 
         // data send to backend 
         if (price > 0 && quantity > 0) {
-            await axios.post(`http://localhost:5000/addInventoryItem`, newItem)
+            await axios.post(`https://bestfruits.cyclic.app/addInventoryItem`, newItem)
                 .then(response => {
                     const { data } = response;
                     if (data.insertedId) {
