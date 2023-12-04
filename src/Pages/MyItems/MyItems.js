@@ -24,7 +24,7 @@ const MyItems = () => {
         const getItem = async () => {
             const email = user?.email;
             if (email) {
-                const { data } = await axios.get(`https://fast-sands-43043.herokuapp.com/myItemsCount?email=${email}`, {
+                const { data } = await axios.get(`http://localhost:5000/myItemsCount?email=${email}`, {
                     headers: {
                         authorization: `Bearer ${localStorage.getItem('accessToken')}`
                     }
@@ -56,20 +56,18 @@ const MyItems = () => {
             const email = user?.email;
             if (email) {
                 try {
-                    const { data } = await axios.get(`https://fast-sands-43043.herokuapp.com/myItems?email=${email}&page=${page}`, {
+                    const { data } = await axios.get(`http://localhost:5000/myItems?email=${email}&page=${page}`, {
                         headers: {
                             authorization: `Bearer ${localStorage.getItem('accessToken')}`
                         }
                     });
-                    console.log(page + 1)
-                    console.log(data)
                     setMyItems(data)
                 }
                 catch (error) {
                     if (error.response.status === 403 || error.response.status === 401) {
                         signOut(auth);
                         navigate('/login');
-                        const { data } = await axios.get(`https://fast-sands-43043.herokuapp.com/myItems?email=${email}`, {
+                        const { data } = await axios.get(`http://localhost:5000/myItems?email=${email}`, {
                             headers: {
                                 authorization: `Bearer ${localStorage.getItem('accessToken')}`
                             }
@@ -87,7 +85,7 @@ const MyItems = () => {
     // handle specific item delete using specific id 
     const handleMyItemDelete = _id => {
 
-        const url = `https://fast-sands-43043.herokuapp.com/item/${_id}`;
+        const url = `http://localhost:5000/item/${_id}`;
         fetch(url, {
             method: 'DELETE'
         })
@@ -131,17 +129,17 @@ const MyItems = () => {
                         :
                         <div>
                             {
-                                loading ?
-                                    <h1 className='text-danger'>No items to show !</h1>
-                                    :
+                                loading ?           
                                     <Spinner className="spinner-border d-block mx-auto" variant='success' role="status">
                                     </Spinner>
+                                    :
+                                    <h1 className='text-danger'>No items to show !</h1>    
                             }
                         </div>
                 }
             </div>
             <div className='mt-3'>
-                {
+                { myItems.length > 1 &&
                     [...Array(count).keys()]
                         .map(number => <button
                             onClick={() => setPage(number)}

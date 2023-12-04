@@ -8,6 +8,7 @@ import auth from '../../../firebase.init';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import './Register.css'
+import axios from 'axios';
 
 const Register = () => {
 
@@ -26,6 +27,10 @@ const Register = () => {
         const password = e.target.password.value;
 
         await createUserWithEmailAndPassword(email, password);
+
+        // email sent to database and access token stored in local storage
+        const { data } = await axios.post('http://localhost:5000/login', { email });
+        localStorage.setItem('accessToken', data.accessToken);
     }
 
     // error message 

@@ -32,12 +32,11 @@ const Login = () => {
         // taken values via form
         const email = e.target.email.value;
         const password = e.target.password.value;
-        console.log(email)
 
         await signInWithEmailAndPassword(email, password);
 
         // email sent to database and access token stored in local storage
-        const { data } = await axios.post('https://fast-sands-43043.herokuapp.com/login', { email })
+        const { data } = await axios.post('http://localhost:5000/login', { email });
         localStorage.setItem('accessToken', data.accessToken);
     }
 

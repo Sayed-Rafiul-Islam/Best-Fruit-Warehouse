@@ -48,7 +48,7 @@ const AddInventoryItem = () => {
 
         // data send to backend 
         if (price > 0 && quantity > 0) {
-            await axios.post(`https://fast-sands-43043.herokuapp.com/addInventoryItem`, newItem)
+            await axios.post(`http://localhost:5000/addInventoryItem`, newItem)
                 .then(response => {
                     const { data } = response;
                     if (data.insertedId) {
