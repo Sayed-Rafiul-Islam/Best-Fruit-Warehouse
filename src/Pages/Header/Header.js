@@ -11,10 +11,12 @@ const Header = () => {
     const [visible, setVisible] = useState(false);
 
     // sign Out 
+
     const [user] = useAuthState(auth);
     const handleLogout = () => {
         signOut(auth);
-        toast.error("Logged Out !")
+        toast.error("Logged Out !");
+        localStorage.removeItem('accessToken')
     }
     return (
         <div className='my-lg-3 header fixed-top d-flex align-items-center'>
