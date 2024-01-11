@@ -31,7 +31,7 @@ const Login = () => {
         await signInWithEmailAndPassword(email, password);
 
         // email sent to database and access token stored in local storage
-        const { data } = await axios.post('http://localhost:5000/login', { email });
+        const { data } = await axios.post('https://bestfruits.cyclic.app/login', { email });
         localStorage.setItem('accessToken', data.accessToken);
         
     }
