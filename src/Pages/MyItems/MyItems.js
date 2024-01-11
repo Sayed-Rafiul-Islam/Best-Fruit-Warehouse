@@ -24,7 +24,7 @@ const MyItems = () => {
         const getItem = async () => {
             const email = user?.email;
             if (email) {
-                const { data } = await axios.get(`https://bestfruits.cyclic.app/myItemsCount?email=${email}`, {
+                const { data } = await axios.get(`https://best-fruit-warehouse-server-side.vercel.app/myItemsCount?email=${email}`, {
                     headers: {
                         authorization: `Bearer ${localStorage.getItem('accessToken')}`
                     }
@@ -56,7 +56,7 @@ const MyItems = () => {
             const email = user?.email;
             if (email) {
                 try {
-                    const { data } = await axios.get(`https://bestfruits.cyclic.app/myItems?email=${email}&page=${page}`, {
+                    const { data } = await axios.get(`https://best-fruit-warehouse-server-side.vercel.app/myItems?email=${email}&page=${page}`, {
                         headers: {
                             authorization: `Bearer ${localStorage.getItem('accessToken')}`
                         }
@@ -67,7 +67,7 @@ const MyItems = () => {
                     if (error.response.status === 403 || error.response.status === 401) {
                         signOut(auth);
                         navigate('/login');
-                        const { data } = await axios.get(`https://bestfruits.cyclic.app/myItems?email=${email}`, {
+                        const { data } = await axios.get(`https://best-fruit-warehouse-server-side.vercel.app/myItems?email=${email}`, {
                             headers: {
                                 authorization: `Bearer ${localStorage.getItem('accessToken')}`
                             }
@@ -85,7 +85,7 @@ const MyItems = () => {
     // handle specific item delete using specific id 
     const handleMyItemDelete = _id => {
 
-        const url = `https://bestfruits.cyclic.app/item/${_id}`;
+        const url = `https://best-fruit-warehouse-server-side.vercel.app/item/${_id}`;
         fetch(url, {
             method: 'DELETE'
         })

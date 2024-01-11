@@ -29,7 +29,7 @@ const Register = () => {
         await createUserWithEmailAndPassword(email, password);
 
         // email sent to database and access token stored in local storage
-        const { data } = await axios.post('https://bestfruits.cyclic.app/login', { email });
+        const { data } = await axios.post('https://best-fruit-warehouse-server-side.vercel.app/login', { email });
         localStorage.setItem('accessToken', data.accessToken);
     }
 

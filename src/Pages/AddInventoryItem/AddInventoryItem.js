@@ -48,7 +48,7 @@ const AddInventoryItem = () => {
 
         // data send to backend 
         if (price > 0 && quantity > 0) {
-            await axios.post(`https://bestfruits.cyclic.app/addInventoryItem`, newItem)
+            await axios.post(`https://best-fruit-warehouse-server-side.vercel.app/addInventoryItem`, newItem)
                 .then(response => {
                     const { data } = response;
                     if (data.insertedId) {

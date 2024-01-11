@@ -23,7 +23,7 @@ const Home = () => {
     // load data
     useEffect(() => {
         const getItems = async () => {
-            const data = await axios.get('https://bestfruits.cyclic.app/item');
+            const data = await axios.get('https://best-fruit-warehouse-server-side.vercel.app/item');
             setItems(data.data);
         }
         getItems();
